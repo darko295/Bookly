@@ -6,6 +6,18 @@ $review = new review();
 $current = "Guest";
 $user = new user();
 
+include "classes/stats.php";
+$stats = new stats();
+
+
+
+if(!isset($_SESSION['bookly'])){
+    $_SESSION['bookly'] = true;
+    $stats -> incrementDailyViews(basename($_SERVER["SCRIPT_FILENAME"]));
+    if(!isset($_SESSION['index'])){
+    $stats -> incrementTotalViews(basename($_SERVER["SCRIPT_FILENAME"]));
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -312,15 +324,6 @@ if (isset($_SESSION['username'])) {
                         }
                         ?>
 
-                        <!--                        <nav class="demo-nav mdl-cell mdl-cell--12-col">-->
-                        <!--                            <div class="section-spacer"></div>-->
-                        <!--                            <a href="#" class="demo-nav__button" title="show more">-->
-                        <!--                                More-->
-                        <!--                                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">-->
-                        <!--                                    <i class="material-icons" role="presentation">arrow_forward</i>-->
-                        <!--                                </button>-->
-                        <!--                            </a>-->
-                        <!--                        </nav>-->
                     </div>
 
                 </main>

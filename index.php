@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <?php
+session_start();
+
+
 include "classes/review.php";
 $review_index = new review();
 
 include "classes/user.php";
 $user = new user();
 
+include "classes/stats.php";
+$stats = new stats();
 
-session_start();
+
+
+if(!isset($_SESSION['index'])){
+    $_SESSION['index'] = true;
+$stats -> incrementDailyViews(basename($_SERVER["SCRIPT_FILENAME"]));
+    if(!isset($_SESSION['bookly'])){
+$stats -> incrementTotalViews(basename($_SERVER["SCRIPT_FILENAME"]));
+    }
+}
+
+
 ?>
 
 
