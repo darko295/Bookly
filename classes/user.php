@@ -140,13 +140,29 @@ include(dirname(__FILE__)."/../connection.php");
         $password = $red['password'];
         $username = $red['username'];
         $to = $email;
-        $header = "From:bookly@office.com \r\n";
         $subject = "Password Reset on Bookly";
 
         $message = "Hello ".$username.",\n\nYou requested password reset for your Bookly account. If this is a mistake, do nothing and nothing will happen.\r\n\nYour password is: ".$password."\r\n\nCheers,\nBookly team.";
-        mail($to,$subject,$message,$header);
+        mail($to,$subject,$message);
 
 
+
+    }
+
+    public function getNumberOfActiveUsers(){
+
+        global $mysqli;
+
+        $sql = "SELECT * FROM user WHERE active = 1";
+
+        if ($result = $mysqli->query($sql)){
+
+         return   mysqli_num_rows($result);
+        } else {
+
+            echo "nepoznat";
+        }
+        $mysqli -> close();
 
     }
 

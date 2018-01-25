@@ -5,7 +5,6 @@ include "connection.php";
 $table = "review";
 $primaryKey = 'reviewID';
 
-// Niz sa nazivima kolona iz baze. Prvi niz dodaje id atribut u svaki <tr>
 $columns = array(
     array(
         'db' => 'reviewID',
@@ -24,6 +23,10 @@ $columns = array(
 
 );
 
+
+
+
+
 // SQL server connection information
 $sql_details = array(
     'user' => "root",
@@ -38,4 +41,5 @@ require( 'DataTables-1.10.4/examples/server_side/scripts/ssp.class.php' );
 
 echo json_encode(
     SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns )
+
 );

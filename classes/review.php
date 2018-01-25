@@ -20,7 +20,8 @@ class review
 
     public function addReview($bookID, $authorID, $review, $stars, $username)
     {
-        global $mysqli;
+        include(dirname(__FILE__) . "/../connection.php");
+
         $row = $this->getID($username);
         $id = $row['userID'];
         $date = date("Y-m-d H:i:s");

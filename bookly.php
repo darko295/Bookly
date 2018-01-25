@@ -23,7 +23,7 @@ $user = new user();
     <!-- JS-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!--    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>-->
 
 
     <!-- CSS -->
@@ -64,17 +64,13 @@ $user = new user();
                     function (data) {
                         if (data == 1) {
                             $(table_row).parent().parent().css({"filter": "grayscale(80%)"});
-                            swal("Review successefuly deleted!");
+                            //timeout ili plugin za potvrdu brisanja
+                            //resiti i za rating -1 kad korisnik ne postavi rating
                             $(table_row).parent().parent().remove();
-
                         }
                     });
-            }
+            });
         });
-        })
-        ;
-        })
-        ;
     </script>
 
 

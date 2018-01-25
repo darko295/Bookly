@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <?php
 
-
+session_start();
 include "classes/user.php";
 $user = new user();
+$result = $user -> get_user($_SESSION['username']);
+$info = $result -> fetch_array();
 
-
-session_start();
 ?>
 
 
@@ -86,14 +86,9 @@ session_start();
             <?php
             if (!isset($_SESSION['username'])) {
                 ?>
-                <form style="margin: -10px">
-                    <button class="cd-signin btn btn-info btn-md" type="button" placeholder="Login" value="login">
-                        Login
-                    </button>
-                    <button class="cd-signup btn btn-primary btn-md" id="registration" type="button"
-                            placeholder="Sign Up" value="signup">Sign Up
-                    </button>
-                </form>
+               <script>
+                window.location.href = "index.php" ;
+               </script>
 
                 <?php
             } else {
@@ -121,114 +116,7 @@ session_start();
 <!--/.Navbar-->
 
 
-<div class="cd-user-modal">
-    <div class="cd-user-modal-container">
-        <ul class="cd-switcher">
-            <li style="list-style: none; text-align: center; margin-left: -20px "
-            "><a href="#0">Sign in</a></li>
-            <li style="list-style: none"><a href="#0">New account</a></li>
-        </ul>
 
-
-        <div id="cd-login"> <!-- log in form -->
-            <form class="cd-form" id="login-form" method="post">
-
-                <div id="failed-login"></div>
-
-                <p class="fieldset">
-                    <label class="image-replace cd-username" for="signin-username">Username</label>
-                    <input class="full-width has-padding has-border" id="signin-username" minlength="3"
-                           name="login_username" type="text" placeholder="Username" required>
-                    <span class="cd-error-message">Wrong username!</span>
-                </p>
-
-                <p class="fieldset">
-                    <label class="image-replace cd-password" for="signin-password">Password</label>
-                    <input class="full-width has-padding has-border" name="login_password" id="signin-password"
-                           minlength="5" type="password" placeholder="Password" required>
-                    <a href="#0" class="hide-password">Show</a>
-                    <span class="cd-error-message">Password must be at least 5 chars long.</span>
-                </p>
-
-
-                <p class="fieldset">
-                    <input class="full-width-button" id="login-submit" type="button" name="login_submit"
-                           onclick="valid_login()" value="Login">
-                </p>
-
-                <div class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></div>
-
-            </form>
-
-
-        </div> <!-- end of login form -->
-
-
-        <div id="cd-signup"> <!-- sign up form -->
-            <form class="cd-form" id="create_form" method="post" action="signup.php">
-                <p class="fieldset">
-                    <label class="image-replace cd-username" for="signup-username">Username</label>
-                    <input class="full-width has-padding has-border" name="create_username" id="signup-username"
-                           minlength="3" maxlength="17" type="text" required placeholder="Username">
-                <div id="info"></div>
-
-                </p>
-
-                <p class="fieldset">
-                    <label class="image-replace cd-email" for="signup-email">E-mail</label>
-                    <input class="full-width has-padding has-border" name="create_email" id="signup-email" type="email"
-                           minlength="10" required placeholder="E-mail"
-                           oninvalid="this.setCustomValidity('Enter your e-mail Here')"
-                           oninput="setCustomValidity('')">
-                    <span class="cd-error-message">Wrong e-mail format!</span>
-                </p>
-
-                <p class="fieldset">
-                    <label class="image-replace cd-password" for="signup-password">Password</label>
-                    <input class="full-width has-padding has-border" name="create_password" id="signup-password"
-                           minlength="5" type="password" required placeholder="Password">
-                    <a href="#0" class="hide-password">Show</a>
-                    <span class="cd-error-message">Password must be at least 5 chars long!</span>
-                </p>
-
-                <p class="fieldset">
-                    <input type="checkbox" id="accept-terms" name="create_checkbox" required>
-                    <label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
-                </p>
-
-                <p class="fieldset">
-                    <input class="full-width-button has-padding" name="create_submit" type="submit"
-                           value="Create account">
-                </p>
-            </form>
-
-
-        </div> <!-- end of signup form-->
-
-        <div id="cd-reset-password"> <!-- reset password form -->
-            <p class="cd-form-message">Lost your password? Please enter your email address. You will receive your
-                password.</p>
-
-            <form class="cd-form" method="post" action="password_reset.php">
-                <p class="fieldset">
-                    <label class="image-replace cd-email" for="reset-email">E-mail</label>
-                    <input class="full-width has-padding has-border" id="reset-email" name="email_reset" required
-                           type="email" placeholder="E-mail">
-                <div id="failed-reset"></div>
-                </p>
-
-                <p class="fieldset">
-                    <input class="full-width-button has-padding" id="reset-button" type="button" name="reset_pass"
-                           onclick="password_reset()" value="Reset password">
-                </p>
-                <div class="cd-form-bottom-message"><a href="#0">Back to log-in</a></div>
-
-            </form>
-
-        </div> <!-- end of reset password form -->
-        <a href="#0" class="cd-close-form">Close</a>
-    </div>
-</div>
 
 
 <!--Posts section-->
@@ -239,11 +127,11 @@ session_start();
 
             <div class="profile-wrap">
                 <div class="profile_pic-wrap">
-                    <img id="user-img" src="https://si0.twimg.com/profile_images/3420243589/630181de138719039814f8ec46805319.jpeg" alt="" />
+                    <img id="user-img" src="https://www.menon.no/wp-content/uploads/person-placeholder.jpg" alt="" />
                 </div>
                 <div class="info-wrap">
-                    <h1 class="user-name">Adam Leith P</h1>
-                    <p class="user-title">User-Interface Designer</p>
+                    <p class="user-username">Username: <?php echo $info['username']; ?> </p>
+                    <p class="user-mail">E-mail:  <?php echo $info['email']; ?></p>
                 </div>
 
             </div>
