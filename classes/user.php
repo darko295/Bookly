@@ -99,7 +99,7 @@ include(dirname(__FILE__)."/../connection.php");
 
 
     public function is_logged_in(){
-        if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+        if(isset($_['loggedin']) && $_SESSION['loggedin'] == true){
             return true;
         }
         return false;
