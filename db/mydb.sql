@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 20, 2018 at 03:32 PM
+-- Generation Time: Jan 25, 2018 at 10:17 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -49,7 +49,8 @@ INSERT INTO `author` (`authorID`, `name`, `surname`) VALUES
 (14, 'Umberto', 'Eko'),
 (15, 'Vladimir', 'Nabokov'),
 (16, 'Dobrica', 'Cosic'),
-(17, 'Milos', 'Crnjanski');
+(17, 'Milos', 'Crnjanski'),
+(18, 'Dzon', 'Banvil');
 
 -- --------------------------------------------------------
 
@@ -81,7 +82,9 @@ INSERT INTO `book` (`bookID`, `bookTitle`, `authorID`) VALUES
 (15, 'Lolita', 15),
 (16, 'Prokleta avlija', 5),
 (17, 'Deobe', 16),
-(18, 'Seobe', 17);
+(18, 'Seobe', 17),
+(19, 'Na Drini cuprija', 5),
+(20, 'More', 18);
 
 -- --------------------------------------------------------
 
@@ -104,15 +107,15 @@ CREATE TABLE `review` (
 --
 
 INSERT INTO `review` (`reviewID`, `userID`, `bookID`, `authorID`, `reviewContent`, `reviewStars`, `reviewTime`) VALUES
-(24, 1, 5, 1, 'Bilo je pravo uzivanje citati je!', 3, '2017-12-15 15:15:32'),
 (25, 1, 6, 9, 'Opravdao epitet pravog klasika knjizevnosti XX veka. Sve preporuke!', 5, '2017-12-15 15:22:51'),
-(26, 1, 7, 10, 'Malo predugacka za moj ukus, ali vredi procitati.', 4.5, '2017-12-16 17:55:30'),
 (34, 10, 12, 13, 'Sjajna knjiga, vanvremenka.', 5, '2017-12-17 00:06:43'),
 (35, 10, 5, 1, 'Moja omiljena. Uvek je rado procitam.', 5, '2017-12-17 00:09:49'),
 (37, 10, 14, 14, 'Jako teska knjiga za citati. Definitivno za one sa dobrom paznjom i koncentracijom. Generalno, veoma dobra knjiga.', 3.5, '2017-12-17 00:14:58'),
 (38, 1, 15, 15, 'Svaka preporuka. Moj novi favorit kada je knjizevnost XX veka u pitanju.', 4, '2017-12-17 13:23:10'),
 (41, 15, 16, 5, 'Najsvetlija knjiga srpske knjizevnosti XX veka, nema danas vise takvih pisaca i mislilaca kakav je bio Andric.', 3.5, '2017-12-18 19:26:41'),
-(45, 1, 18, 17, 'Jako mi se dopada, jedan od boljih naslova koje sam procitao.', 4.5, '2017-12-24 13:39:56');
+(45, 1, 18, 17, 'Jako mi se dopada, jedan od boljih naslova koje sam procitao.', 4.5, '2017-12-24 13:39:56'),
+(46, 1, 14, 14, 'Fenomenalna, zaista ume da vas natera da odlutate i zaboravite na vreme.', 4.5, '2018-01-21 23:05:04'),
+(47, 24, 19, 5, 'Onakva kako se samo moze ocekivati od velikana srpske knjizevnosti kao sto je Ivo Andric. Svaka preporuka.', 5, '2018-01-21 23:19:48');
 
 -- --------------------------------------------------------
 
@@ -125,21 +128,25 @@ CREATE TABLE `user` (
   `username` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `active` varchar(1) COLLATE utf8_unicode_ci NOT NULL
+  `active` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `isAdmin` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userID`, `username`, `password`, `email`, `active`) VALUES
-(1, 'darko', 'darko', 'darko', '0'),
-(10, 'darko1', 'darko1', 'darko1', '0'),
-(15, 'nikola', 'nikola2232', 'nikola@gmail.com', '0'),
-(16, 'test', 'password', 'test@darko.rs', '0'),
-(21, 'petar153', 'petar153', 'petar153@gmail.com', '0'),
-(22, 'jovan', 'jovan', 'jovan@gmail.com', '0'),
-(23, 'darko', 'darko123', 'darkob295@gmail.com', '0');
+INSERT INTO `user` (`userID`, `username`, `password`, `email`, `active`, `isAdmin`) VALUES
+(1, 'darko', 'darko', 'darko', '1', 1),
+(10, 'darko1', 'darko1', 'darko1', '1', 0),
+(15, 'nikola', 'nikola2232', 'nikola@gmail.com', '0', 0),
+(16, 'test', 'password', 'test@darko.rs', '0', 0),
+(21, 'petar153', 'petar153', 'petar153@gmail.com', '0', 0),
+(22, 'jovan', 'jovan', 'jovan@gmail.com', '0', 0),
+(23, 'darko295', 'darkob1995', 'darkob295@gmail.com', '0', 0),
+(24, 'filip123', 'filip123', 'filip123@gmail.com', '0', 0),
+(25, 'pera', 'pera1', 'pera@gmail.com', '1', 0),
+(26, 'andrijana', 'andrijana', 'andrijana@gmail.com', '0', 0);
 
 --
 -- Indexes for dumped tables
@@ -181,25 +188,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `author`
 --
 ALTER TABLE `author`
-  MODIFY `authorID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `authorID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
-  MODIFY `bookID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `bookID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `reviewID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `reviewID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- Constraints for dumped tables
