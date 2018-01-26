@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2018 at 10:17 PM
+-- Generation Time: Jan 26, 2018 at 10:06 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -143,7 +143,7 @@ INSERT INTO `user` (`userID`, `username`, `password`, `email`, `active`, `isAdmi
 (16, 'test', 'password', 'test@darko.rs', '0', 0),
 (21, 'petar153', 'petar153', 'petar153@gmail.com', '0', 0),
 (22, 'jovan', 'jovan', 'jovan@gmail.com', '0', 0),
-(23, 'darko295', 'darkob1995', 'darkob295@gmail.com', '0', 0),
+(23, 'darko295', 'darkob1995', 'darkob@gmail.com', '0', 0),
 (24, 'filip123', 'filip123', 'filip123@gmail.com', '0', 0),
 (25, 'pera', 'pera1', 'pera@gmail.com', '1', 0),
 (26, 'andrijana', 'andrijana', 'andrijana@gmail.com', '0', 0);
