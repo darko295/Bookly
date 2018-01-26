@@ -18,6 +18,8 @@ if(!isset($_SESSION['admin'])){
 
 $data = $stats -> getDailyStatsForBookly();
 
+include "get_data.php";
+
 ?>
 <head>
 
@@ -34,51 +36,15 @@ $data = $stats -> getDailyStatsForBookly();
     <link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="css/bootstrap.css">
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="js/Chart.bundle.min.js"></script>
+    <script type="text/javascript" src="js/Chart.min.js"></script>
+
+    <script type="text/javascript" src="js/utils.js"></script>
 
 
 
-<!--    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
-    <script type="text/javascript">
 
-        // Load the Visualization API and the piechart package.
-        google.charts.load('current', {'packages':['corechart']});
 
-        // Set a callback to run when the Google Visualization API is loaded.
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-            var jsonData = $.ajax({
-                url: "get_data.php",
-                dataType: "json",
-                async: false
-            }).responseText;
-
-            // Create our data table out of JSON data loaded from server.
-            var data = new google.visualization.DataTable(jsonData);
-
-            var options = {
-                title: 'Daily hits on bookly.php',
-                width: 500,
-                height:500,
-                legend: { position: 'none' },
-                chart: { title: 'Daily hits on bookly.php',
-                    subtitle: 'popularity by percentage' },
-                bars: 'vertical',
-                axes: {
-                    x: {
-                        0: { side: 'top', label: 'Hits'}
-                    }
-                },
-                bar: { groupWidth: "90%" }
-            };
-
-            // Instantiate and draw our chart, passing in some options.
-            var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-            chart.draw(data, options);
-        }
-
-    </script>
 
 
     <script>
@@ -151,10 +117,65 @@ $data = $stats -> getDailyStatsForBookly();
 </table>
 
 
+<div id="chart-container" style="height: 600px; width: 600px">
+    <canvas id="mycanvas" ></canvas>
+</div>
 
-<div id="chart_div"></div>
+<script>
 
+    $(document).ready(function(){
+        $.ajax({
+            url: "json/views_by_day.json",
+            method: "GET",
+            success: function(data) {
+                console.log(data);
+                var date = [];
+                var viewsBookly = [];
+                var viewsIndex = [];
+                for(var i in data) {
+                    if(!date.includes("On " + data[i].views_date)){
+                        date.push("On " + data[i].views_date);
+                    }
+                    if(data[i].page === "bookly.php"){
+                    viewsBookly.push(data[i].views);
+                    }else if(data[i].page === "index.php"){
+                        viewsIndex.push(data[i].views);
+                    }
+                }
+                date.reverse();
+                viewsBookly.reverse();
+                viewsIndex.reverse();
+                var chartdata = {
+                    labels: date,
+                    datasets : [
+                        {
+                            label: 'Hits on index.php',
+                            borderColor: 'rgba(250, 100, 100, 0.75)',
+                            hoverBorderColor: 'rgba(200, 200, 200, 1)',
+                            data: viewsIndex
+                        },
+                        {
+                            label: 'Hits on bookly.php',
+                            borderColor: 'rgba(200, 200, 200, 0.75)',
+                            hoverBorderColor: 'rgba(200, 200, 200, 1)',
+                            data: viewsBookly
+                        }
+                    ]
+                };
 
+                var ctx = $("#mycanvas");
+
+                var barGraph = new Chart(ctx, {
+                    type: 'line',
+                    data: chartdata
+                });
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
