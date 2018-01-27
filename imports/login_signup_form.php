@@ -1,6 +1,7 @@
 <html>
 <head>
 
+
     <script type="text/javascript">
         $(document).ready(function () {
             $("#signup-username").blur(function () {
@@ -94,6 +95,32 @@
         }
 
     </script>
+
+<style>
+
+    .cd-form input {
+        margin: 0;
+        padding: 0;
+        border-radius: 0.25em;
+    }
+
+    .cd-form input.has-border:focus {
+        border-color: #343642;
+        box-shadow: 0 0 5px rgba(52, 54, 66, 0.1);
+        outline: none;
+
+    .cd-form input.has-border {
+        border: 1px solid #d2d8d8;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+        -o-appearance: none;
+        appearance: none;
+    }
+
+</style>
+
+
 
 </head>
 

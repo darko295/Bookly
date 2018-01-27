@@ -9,7 +9,7 @@ $user = new user();
 
         if ($user->login($username, $password)) {
             $_SESSION['username'] = $username;
-            $_SESSION['isloggedin'] = true;
+            $_SESSION['loggedin'] = true;
 
             echo '<script>window.location.href = "bookly.php"; </script>';
 

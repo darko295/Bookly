@@ -1846,6 +1846,21 @@ pre code {
   border: 0;
 }
 
+.form-control-footer {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #fff;
+  background-color: #fff;
+  background-image: none;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
 .form-control-mine {
   display: block;
   width: 100%;
@@ -1866,6 +1881,8 @@ pre code {
   border: 0;
 }
 
+
+
 .form-control:focus {
   color: #495057;
   background-color: #fff;
@@ -1874,10 +1891,14 @@ pre code {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
+
+
 .form-control::-webkit-input-placeholder {
   color: #868e96;
   opacity: 1;
 }
+
+
 
 .form-control:-ms-input-placeholder {
   color: #868e96;
@@ -1889,7 +1910,7 @@ pre code {
   opacity: 1;
 }
 
-.form-control::placeholder {
+.form-control-footer::placeholder {
   color: #868e96;
   opacity: 1;
 }

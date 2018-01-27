@@ -8,7 +8,6 @@ include(dirname(__FILE__)."/../connection.php");
      {
          global $mysqli;
 
-
          $sql = "SELECT * FROM user WHERE username = '" . $username . "'";
 
          if ($result = $mysqli->query($sql)){

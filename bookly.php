@@ -40,7 +40,7 @@ if(!isset($_SESSION['bookly'])){
 
     <!-- CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/mdb.min.css" rel="stylesheet">
+    <link href="css/mdb.css" rel="stylesheet">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -84,6 +84,8 @@ if(!isset($_SESSION['bookly'])){
             });
         });
     </script>
+
+
 
 
 </head>
@@ -203,12 +205,12 @@ if (isset($_SESSION['username'])) {
 
                                             <div class="form-group" style="width: 45%; margin-right: 40px">
                                                 <label for="author-name"></label>
-                                                <input class="form-control-mine back-col" id="author-name" type="text"
+                                                <input class="form-control-mine back-col down-border" id="author-name" type="text"
                                                        name="author_name" required placeholder="Author name"></div>
 
                                             <div class="form-group" style="width: 45%">
                                                 <label for="author-surname"></label>
-                                                <input class="form-control-mine back-col" id="author-surname"
+                                                <input class="form-control-mine back-co down-borderl" id="author-surname"
                                                        type="text" name="author_surname" required
                                                        placeholder="Author surname">
                                             </div>
@@ -219,7 +221,7 @@ if (isset($_SESSION['username'])) {
 
 
                                         <div class="form-group" style="margin-top: -5px">
-                                            <textarea class="md-textarea back-col" id="review-text" name="review_text"
+                                            <textarea class="md-textarea back-col down-border" id="review-text" name="review_text"
                                                       required placeholder="Review here"
                                                       style="max-width: 80%"></textarea>
                                         </div>
@@ -342,9 +344,12 @@ if (isset($_SESSION['username'])) {
 
 
 <!--Footer-->
+
 <?php
 require "imports/footer.php";
 ?>
+
+
 <!--/.Footer-->
 
 
