@@ -14,13 +14,9 @@
         $result = $review->getStats();
         $row = $result->fetch_object();
         ?>
-        <ul>
-            <li style="font-size: 18px"><b><?php echo $row->userCount; ?></b> korisnika</li>
-            <li style="font-size: 18px"><b><?php echo $row->bookCount; ?></b> ocenjenih knjiga</li>
-            <li style="font-size: 18px"><b><?php echo $row->reviewCount; ?></b> utisaka</li>
-        </ul>
+
     </div>
-    <div class="mdl-card__supporting-text meta meta--fill mdl-color-text--grey-600">
+        <div class="mdl-card__supporting-text meta meta--fill mdl-color-text--grey-600">
         <div>
             <b>Hvala vam!</b> <i style="font-size:10px">Bookly team.</i>
         </div>

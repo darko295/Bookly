@@ -37,7 +37,7 @@ class review
     public function getAll()
     {
         include(dirname(__FILE__) . "/../connection.php");
-        $sql = "SELECT u.username, u.userID, b.bookTitle, a.name, a.surname, r.reviewID, r.reviewContent, r.reviewStars, r.reviewTime
+        $sql = "SELECT u.username, u.userID, b.bookTitle, b.bookID, a.authorID, a.name, a.surname, r.reviewID, r.reviewContent, r.reviewStars, r.reviewTime
                 FROM author a JOIN book b ON a.authorID=b.authorID JOIN review r ON b.bookID=r.bookID JOIN user u ON u.userID=r.userID";
         if ($rezultat = $mysqli->query($sql)) {
             $mysqli->close();
