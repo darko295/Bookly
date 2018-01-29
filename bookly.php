@@ -10,12 +10,11 @@ include "classes/stats.php";
 $stats = new stats();
 
 
-
-if(!isset($_SESSION['bookly'])){
+if (!isset($_SESSION['bookly'])) {
     $_SESSION['bookly'] = true;
-    $stats -> incrementDailyViews(basename($_SERVER["SCRIPT_FILENAME"]));
-    if(!isset($_SESSION['index'])){
-    $stats -> incrementTotalViews(basename($_SERVER["SCRIPT_FILENAME"]));
+    $stats->incrementDailyViews(basename($_SERVER["SCRIPT_FILENAME"]));
+    if (!isset($_SESSION['index'])) {
+        $stats->incrementTotalViews(basename($_SERVER["SCRIPT_FILENAME"]));
     }
 }
 ?>
@@ -35,7 +34,7 @@ if(!isset($_SESSION['bookly'])){
     <!-- JS-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!--    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>-->
+    <!--    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>-->
 
 
     <!-- CSS -->
@@ -77,7 +76,6 @@ if(!isset($_SESSION['bookly'])){
                         if (data == 1) {
                             $(table_row).parent().parent().css({"filter": "grayscale(80%)"});
                             //timeout ili plugin za potvrdu brisanja
-                            //resiti i za rating -1 kad korisnik ne postavi rating
                             $(table_row).parent().parent().remove();
                         }
                     });
@@ -86,6 +84,61 @@ if(!isset($_SESSION['bookly'])){
     </script>
 
 
+    <script>
+
+        $(document).ready(function () {
+            $("#search-box").keyup(function () {
+                var vrednost = $("#search-box").val();
+                if (vrednost.length > 0) {
+                    $.get("predictive_search.php", {unos: vrednost},
+                        function (data) {
+                            $("#suggesstion-box").show();
+                            $("#suggesstion-box").html(data);
+                        });
+                } else {
+                    $("#suggesstion-box").hide();
+                }
+            });
+        });
+
+        function place(val) {
+            $("#search-box").val(val.innerHTML);
+            $("#suggesstion-box").hide();
+        }
+
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $(".wishlist-add").click(function () {
+                var info = ($(this).attr("id")).split('-');
+                var action = "wishlist";
+                var book_id = info[2];
+                var author_id = info[1];
+                var user_id = info[0];
+                $.ajax({
+                    type: "POST",
+                    url: "ws_calls.php",
+                    data: {
+                        author_id: author_id,
+                        user_id: user_id,
+                        book_id: book_id,
+                        action: action
+                    },
+                    success: function (data) {
+                        if (data === "1") {
+                            alert("Dodato u wishlist!");
+                        } else {
+                            alert("Greska!");
+                        }
+                    }
+                });
+            });
+        });
+
+
+    </script>
 
 
 </head>
@@ -97,6 +150,7 @@ if (isset($_SESSION['username'])) {
 
 }
 ?>
+
 
 <!--Navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
@@ -133,10 +187,11 @@ if (isset($_SESSION['username'])) {
                         </li>
                     <?php } ?>
             </ul>
-            <form class="form-inline" style="margin-bottom: -5px">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"
-                       style="padding: 3px">
-            </form>
+            <div class="form" style="margin-bottom: -5px">
+                <input class="form-control mr-sm-2" id="search-box" type="text" placeholder="Search" aria-label="Search"
+                       style="padding: 1px;color: #FFF;">
+                <div id="suggesstion-box" style="color: #FFF;"></div>
+            </div>
             <?php
             if (isset($_SESSION['username'])) {
                 ?>
@@ -146,7 +201,8 @@ if (isset($_SESSION['username'])) {
                            aria-haspopup="true" aria-expanded="false">
                             <span class="glyphicon glyphicon-user"></span>&nbsp;Hi <?php echo $current; ?>&nbsp;</a>
                         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="user_profile.php"><span class="glyphicon glyphicon-user"></span>&nbsp;View
+                            <a class="dropdown-item" href="user_profile.php"><span
+                                        class="glyphicon glyphicon-user"></span>&nbsp;View
                                 Profile</a>
                             <a class="dropdown-item" href="logout.php"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign
                                 Out</a>
@@ -205,12 +261,14 @@ if (isset($_SESSION['username'])) {
 
                                             <div class="form-group" style="width: 45%; margin-right: 40px">
                                                 <label for="author-name"></label>
-                                                <input class="form-control-mine back-col down-border" id="author-name" type="text"
+                                                <input class="form-control-mine back-col down-border" id="author-name"
+                                                       type="text"
                                                        name="author_name" required placeholder="Author name"></div>
 
                                             <div class="form-group" style="width: 45%">
                                                 <label for="author-surname"></label>
-                                                <input class="form-control-mine back-co down-borderl" id="author-surname"
+                                                <input class="form-control-mine back-co down-borderl"
+                                                       id="author-surname"
                                                        type="text" name="author_surname" required
                                                        placeholder="Author surname">
                                             </div>
@@ -221,7 +279,8 @@ if (isset($_SESSION['username'])) {
 
 
                                         <div class="form-group" style="margin-top: -5px">
-                                            <textarea class="md-textarea back-col down-border" id="review-text" name="review_text"
+                                            <textarea class="md-textarea back-col down-border" id="review-text"
+                                                      name="review_text"
                                                       required placeholder="Review here"
                                                       style="max-width: 80%"></textarea>
                                         </div>
@@ -264,55 +323,79 @@ if (isset($_SESSION['username'])) {
                                     ?>
                                     <tr>
                                         <td>
-
-                                            <div class="mdl-card amazing mdl-cell mdl-cell--12-col"
-                                                 id="<?php echo "review" . $row->reviewID; ?>">
-                                                <div class="mdl-card__title mdl-color-text--grey-50"
-                                                     style="position: relative">
-                                                    <?php
-                                                    if ($row->username == $current) {
-                                                        ?>
-                                                        <a class="remove-row" id="remove_<?php echo $row->reviewID; ?>"
-                                                           style="position: absolute; top: 15px;right: 20px"
-                                                           href="#"><span class="fa fa-close"></span></a>
-                                                        <?php
-                                                    }
+                                            <div style="position: relative">
+                                                <?php
+                                                if (isset($_SESSION['username'])) {
                                                     ?>
-                                                    <i><h3 class="quote"><?php echo $row->reviewContent; ?></h3></i>
-                                                    <i><h5 class="quote title-position"
-                                                           style="position: absolute; bottom: 5px;right: 36px"><?php echo $row->name . " " . $row->surname . ", " . $row->bookTitle; ?></h5>
-                                                    </i>
-                                                </div>
-                                                <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                                                    <button class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent"
+                                                            id="<?php echo "menubtn-" . $counter; ?>"
+                                                            style="position: absolute; right: -15px;top:40px; z-index: 20">
+                                                        <i class="material-icons mdl-color-text--white"
+                                                           role="presentation">add</i>
+                                                        <span class="visuallyhidden">add</span>
+                                                    </button>
+                                                <?php } ?>
+                                                <div class="mdl-card amazing mdl-cell mdl-cell--12-col"
+                                                     id="<?php echo "review" . $row->reviewID; ?>">
 
+                                                    <div class="mdl-card__title mdl-color-text--grey-50"
+                                                         style="position: relative">
 
-                                                    <script>
+                                                        <?php
+                                                        if ($row->username == $current) {
+                                                            ?>
+                                                            <a class="remove-row"
+                                                               id="remove_<?php echo $row->reviewID; ?>"
+                                                               style="position: absolute; top: 15px;right: 20px"
+                                                               href="#"><span class="fa fa-close"></span></a>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                        <i><h3 class="quote"><?php echo $row->reviewContent; ?></h3></i>
 
-                                                        $(function () {
+                                                        <i><h5 class="quote title-position"
+                                                               style="position: absolute; bottom: 5px;right: 36px"><?php echo $row->name . " " . $row->surname . ", " . $row->bookTitle; ?></h5>
+                                                        </i>
+                                                    </div>
+                                                    <div class="mdl-card__supporting-text mdl-color-text--grey-600">
 
-                                                            $("<?php echo "#a" . $counter?>").rateYo({
-                                                                rating: <?php echo $row->reviewStars; ?>,
-                                                                ratedFill: "#000",
-                                                                readOnly: true
-                                                            })
-                                                        });
+                                                        <script>
 
-                                                    </script>
-                                                    <?php if ($row->reviewStars != -1) { ?>
-                                                        <div id="<?php echo "a" . $counter; ?>"></div>
-                                                        <h3 style="position: absolute; right: 10px;bottom: 70px;">
-                                                            Rating: <?php echo $row->reviewStars; ?></h3>
-                                                    <?php } ?>
-                                                </div>
-                                                <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
-                                                    <div class="minilogo"></div>
-                                                    <div>
-                                                        <b><?php echo "Posted by " . $row->username; ?></b>
-                                                        <span style="font-size: 12px"><?php echo $date_formated; ?></span>
+                                                            $(function () {
+
+                                                                $("<?php echo "#a" . $counter?>").rateYo({
+                                                                    rating: <?php echo $row->reviewStars; ?>,
+                                                                    ratedFill: "#000",
+                                                                    readOnly: true
+                                                                })
+                                                            });
+                                                        </script>
+
+                                                        <?php if ($row->reviewStars != -1) { ?>
+                                                            <div id="<?php echo "a" . $counter; ?>"></div>
+                                                            <h3 style="position: absolute; right: 10px;bottom: 70px;">
+                                                                Rating: <?php echo $row->reviewStars; ?></h3>
+                                                        <?php } ?>
+                                                    </div>
+                                                    <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+                                                        <div class="minilogo"></div>
+                                                        <div>
+                                                            <b><?php echo "Posted by " . $row->username; ?></b>
+                                                            <span style="font-size: 12px"><?php echo $date_formated; ?></span>
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                <ul class="mdl-menu mdl-js-menu mdl-menu--right mdl-js-ripple-effect"
+                                                    for="<?php echo "menubtn-" . $counter; ?>">
+                                                    <li class="mdl-menu__item" id="author-info">Get author info</li>
+                                                    <li class="mdl-menu__item" id="book-info">Get book info</li>
+                                                    <li class="mdl-menu__item wishlist-add"
+                                                        id="<?php echo $row->userID . "-" . $row->authorID . "-" . $row->bookID; ?>">
+                                                        Add to wishlist
+                                                    </li>
+                                                    <li class="mdl-menu__item" id="share-review">Share</li>
+                                                </ul>
                                             </div>
-
                                         </td>
 
                                     </tr>
@@ -339,6 +422,7 @@ if (isset($_SESSION['username'])) {
 
 </ul>
 </div>
+
 </div>
 <!--/end of review section-->
 
