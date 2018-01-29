@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 27, 2018 at 08:14 PM
+-- Generation Time: Jan 29, 2018 at 08:45 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -50,7 +50,8 @@ INSERT INTO `author` (`authorID`, `name`, `surname`) VALUES
 (15, 'Vladimir', 'Nabokov'),
 (16, 'Dobrica', 'Cosic'),
 (17, 'Milos', 'Crnjanski'),
-(18, 'Dzon', 'Banvil');
+(18, 'Dzon', 'Banvil'),
+(19, 'Žoze', 'Samargo');
 
 -- --------------------------------------------------------
 
@@ -77,14 +78,14 @@ INSERT INTO `book` (`bookID`, `bookTitle`, `authorID`) VALUES
 (10, 'Travnicka hronika', 5),
 (11, 'Ostrvo', 1),
 (12, '1984', 13),
-(13, 'Tvrdjavaz', 1),
 (14, 'Ime ruze', 14),
 (15, 'Lolita', 15),
 (16, 'Prokleta avlija', 5),
 (17, 'Deobe', 16),
 (18, 'Seobe', 17),
 (19, 'Na Drini cuprija', 5),
-(20, 'More', 18);
+(20, 'More', 18),
+(21, 'Godina smrti Rikarda Reisa', 19);
 
 -- --------------------------------------------------------
 
@@ -115,7 +116,8 @@ INSERT INTO `review` (`reviewID`, `userID`, `bookID`, `authorID`, `reviewContent
 (41, 15, 16, 5, 'Najsvetlija knjiga srpske knjizevnosti XX veka, nema danas vise takvih pisaca i mislilaca kakav je bio Andric.', 3.5, '2017-12-18 19:26:41'),
 (45, 1, 18, 17, 'Jako mi se dopada, jedan od boljih naslova koje sam procitao.', 4.5, '2017-12-24 13:39:56'),
 (46, 1, 14, 14, 'Fenomenalna, zaista ume da vas natera da odlutate i zaboravite na vreme.', 4.5, '2018-01-21 23:05:04'),
-(47, 24, 19, 5, 'Onakva kako se samo moze ocekivati od velikana srpske knjizevnosti kao sto je Ivo Andric. Svaka preporuka.', 5, '2018-01-21 23:19:48');
+(47, 24, 19, 5, 'Onakva kako se samo moze ocekivati od velikana srpske knjizevnosti kao sto je Ivo Andric. Svaka preporuka.', 5, '2018-01-21 23:19:48'),
+(48, 27, 21, 19, 'Odlicna!', 5, '2018-01-29 20:42:17');
 
 -- --------------------------------------------------------
 
@@ -137,7 +139,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userID`, `username`, `password`, `email`, `active`, `isAdmin`) VALUES
-(1, 'darko', 'darko', 'darko', '1', 1),
+(1, 'darko', 'darko', 'darko', '0', 1),
 (10, 'darko1', 'darko1', 'darko1', '1', 0),
 (15, 'nikola', 'nikola2232', 'nikola@gmail.com', '0', 0),
 (16, 'test', 'password', 'test@darko.rs', '0', 0),
@@ -146,7 +148,8 @@ INSERT INTO `user` (`userID`, `username`, `password`, `email`, `active`, `isAdmi
 (23, 'darko295', 'darkob1995', 'darkob@gmail.com', '0', 0),
 (24, 'filip123', 'filip123', 'filip123@gmail.com', '0', 0),
 (25, 'pera', 'pera1', 'pera@gmail.com', '1', 0),
-(26, 'andrijana', 'andrijana', 'andrijana@gmail.com', '0', 0);
+(26, 'andrijana', 'andrijana', 'andrijana@gmail.com', '0', 0),
+(27, 'zika', 'zika123', 'zika@gmail.com', '0', 0);
 
 --
 -- Indexes for dumped tables
@@ -188,25 +191,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `author`
 --
 ALTER TABLE `author`
-  MODIFY `authorID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `authorID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
-  MODIFY `bookID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `bookID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `reviewID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `reviewID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Constraints for dumped tables
