@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 29, 2018 at 08:45 PM
+-- Generation Time: Jan 31, 2018 at 08:17 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -139,7 +139,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userID`, `username`, `password`, `email`, `active`, `isAdmin`) VALUES
-(1, 'darko', 'darko', 'darko', '0', 1),
+(1, 'darko', 'darko', 'darko', '1', 1),
 (10, 'darko1', 'darko1', 'darko1', '1', 0),
 (15, 'nikola', 'nikola2232', 'nikola@gmail.com', '0', 0),
 (16, 'test', 'password', 'test@darko.rs', '0', 0),
