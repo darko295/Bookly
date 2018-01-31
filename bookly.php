@@ -51,6 +51,9 @@ if (!isset($_SESSION['bookly'])) {
     <link rel="stylesheet" href="css/_colors.css">
     <link rel="stylesheet" href="css/_mixins.css">
 
+
+
+
     <script>
 
         $(function () {
@@ -130,7 +133,7 @@ if (!isset($_SESSION['bookly'])) {
                         if (data === "1") {
                             alert("Dodato u wishlist!");
                         } else {
-                            alert("Greska!");
+                            alert(data);
                         }
                     }
                 });
@@ -195,7 +198,7 @@ if (isset($_SESSION['username'])) {
             <?php
             if (isset($_SESSION['username'])) {
                 ?>
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right" style="padding-left: 10px">
                     <li class="nav-item btn-group">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
                            aria-haspopup="true" aria-expanded="false">
@@ -204,10 +207,13 @@ if (isset($_SESSION['username'])) {
                             <a class="dropdown-item" href="user_profile.php"><span
                                         class="glyphicon glyphicon-user"></span>&nbsp;View
                                 Profile</a>
+                            <a class="dropdown-item open" href="#" data-toggle = "modal" data-target = "#myModal"><span
+                                        class="glyphicon glyphicon-user"></span>&nbsp;My wishlist</a>
                             <a class="dropdown-item" href="logout.php"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign
                                 Out</a>
                         </div>
                     </li>
+
                 </ul>
             <?php } ?>
         </div>
@@ -216,6 +222,30 @@ if (isset($_SESSION['username'])) {
 
 <!--/.end of navbar-->
 
+<div class="container">
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
 
 <!--Reviews-->
 <div class="view hm-black-light">
@@ -423,8 +453,14 @@ if (isset($_SESSION['username'])) {
 </ul>
 </div>
 
+
+
+
+
 </div>
 <!--/end of review section-->
+
+
 
 
 <!--Footer-->
