@@ -1,6 +1,5 @@
 <html>
 <head>
-<!--    <link rel="stylesheet" href="../css/style.css">-->
 
     <style>
         #question_email, #question_text {
