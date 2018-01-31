@@ -19,9 +19,13 @@
 
 GET:
 ws/authors.json
+
 ws/authors/@id.json
+
 ws/wishlist.json
+
 ws/wishlist/@userid.json
+
 ws/authors.xml
 
 POST:
