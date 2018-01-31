@@ -49,6 +49,7 @@
                     success: function (result) {
                         if (result) {
                             $("#failed-login").html("Redirecting to reviews page...");
+                            $("#loader").show();
                             setTimeout(' window.location.href = "bookly.php"; ', 3000);
                         } else {
                             $("#failed-login").html("Wrong credentials!");
@@ -96,30 +97,31 @@
 
     </script>
 
-<style>
+    <style>
 
-    .cd-form input {
-        margin: 0;
-        padding: 0;
-        border-radius: 0.25em;
-    }
+        .cd-form input {
+            margin: 0;
+            padding: 0;
+            border-radius: 0.25em;
+        }
 
-    .cd-form input.has-border:focus {
-        border-color: #343642;
-        box-shadow: 0 0 5px rgba(52, 54, 66, 0.1);
-        outline: none;
+        .cd-form input.has-border:focus {
+            border-color: #343642;
+            box-shadow: 0 0 5px rgba(52, 54, 66, 0.1);
+            outline: none;
 
-    .cd-form input.has-border {
-        border: 1px solid #d2d8d8;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        -ms-appearance: none;
-        -o-appearance: none;
-        appearance: none;
-    }
+        .cd-form input.has-border {
+            border: 1px solid #d2d8d8;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance: none;
+            -o-appearance: none;
+            appearance: none;
+        }
 
-</style>
 
+
+    </style>
 
 
 </head>
@@ -137,9 +139,12 @@
 
         <div id="cd-login"> <!-- log in form -->
             <form class="cd-form" id="login-form" method="post">
+                <div class="row" style="padding-left: 15px;padding-right: 10px;">
+                    <img id="loader"  src="https://gifimage.net/wp-content/uploads/2017/10/colorful-loader-gif-transparent-13.gif" style="width: 20px; height: 20px; display: none; ">
 
-                <div id="failed-login"></div>
-
+                <div id="failed-login">
+                </div>
+                </div>
                 <p class="fieldset">
                     <label class="image-replace cd-username" for="signin-username">Username</label>
                     <input class="full-width has-padding has-border" id="signin-username" minlength="3"
