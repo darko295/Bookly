@@ -8,7 +8,7 @@ include "connection.php";
         if ($mysqli->query($sql)) {
             echo "1";
         } else {
-            echo "0";
+            echo "Error. You may want to add item that already exist in your wishlist.";
         }
     }
 
