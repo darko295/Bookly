@@ -1,6 +1,6 @@
 # Bookly
 
-*Potrebno je importovati fajl iz foldera db u okviru phpMyAdmin-a.*
+*Potrebno je importovati fajl iz foldera db u okviru phpMyAdmin-a.
 
 **Da bi slanje mejla funkcionisalo potrebno je uraditi sledece:
 
@@ -14,4 +14,19 @@
     - U Setting delu oznaciti Run this program as an administrator
  -> Apply -> Close
 
-**Obavezno uraditi import nove baze jer sadrzi nove tabele.
+
+***WS podrzava sledece funkcije:***
+
+GET:
+ws/authors.json
+
+ws/authors/@id.json
+
+ws/wishlist.json
+
+ws/wishlist/@userid.json
+
+ws/authors.xml
+
+POST:
+ws/wishlist
