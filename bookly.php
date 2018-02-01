@@ -2,12 +2,13 @@
 session_start();
 include "classes/user.php";
 include "classes/review.php";
-$review = new review();
-$current = "Guest";
-$user = new user();
-
 include "classes/stats.php";
+
+$user = new user();
+$review = new review();
 $stats = new stats();
+
+$current = "Guest";
 
 
 if (!isset($_SESSION['bookly'])) {
@@ -77,9 +78,8 @@ if (!isset($_SESSION['bookly'])) {
                 $.get("delete_review.php", {reviewID: value},
                     function (data) {
                         if (data == 1) {
-                            $(table_row).parent().parent().css({"filter": "grayscale(80%)"});
-                            //timeout ili plugin za potvrdu brisanja
-                            $(table_row).parent().parent().remove();
+                            $.notify("Review deleted", "success");
+                            $(table_row).parent().parent().parent().remove();
                         }
                     });
             });
@@ -87,30 +87,30 @@ if (!isset($_SESSION['bookly'])) {
     </script>
 
 
-    <script>
-
-        $(document).ready(function () {
-            $("#search-box").keyup(function () {
-                var vrednost = $("#search-box").val();
-                if (vrednost.length > 0) {
-                    $.get("predictive_search.php", {unos: vrednost},
-                        function (data) {
-                            $("#suggesstion-box").show();
-                            $("#suggesstion-box").html(data);
-                        });
-                } else {
-                    $("#suggesstion-box").hide();
-                }
-            });
-        });
-
-        function place(val) {
-            $("#search-box").val(val.innerHTML);
-            $("#suggesstion-box").hide();
-        }
-
-
-    </script>
+<!--    <script>-->
+<!---->
+<!--        $(document).ready(function () {-->
+<!--            $("#search-box").keyup(function () {-->
+<!--                var vrednost = $("#search-box").val();-->
+<!--                if (vrednost.length > 0) {-->
+<!--                    $.get("predictive_search.php", {unos: vrednost},-->
+<!--                        function (data) {-->
+<!--                            $("#suggesstion-box").show();-->
+<!--                            $("#suggesstion-box").html(data);-->
+<!--                        });-->
+<!--                } else {-->
+<!--                    $("#suggesstion-box").hide();-->
+<!--                }-->
+<!--            });-->
+<!--        });-->
+<!---->
+<!--        function place(val) {-->
+<!--            $("#search-box").val(val.innerHTML);-->
+<!--            $("#suggesstion-box").hide();-->
+<!--        }-->
+<!---->
+<!---->
+<!--    </script>-->
 
     <script>
         $(document).ready(function () {
@@ -131,7 +131,7 @@ if (!isset($_SESSION['bookly'])) {
                     },
                     success: function (data) {
                         if (data === "1") {
-                            alert("Dodato u wishlist!");
+                            $.notify("Item added", "success");
                         } else {
                             alert(data);
                         }
@@ -143,6 +143,43 @@ if (!isset($_SESSION['bookly'])) {
 
     </script>
 
+    <script>
+        $(document).ready(function () {
+            $("#show-wishlist").click(function () {
+    var action = "nesto";
+                $.ajax({
+                    type: "POST",
+                    url: "wishlist_ajax.php",
+                    data: {
+                        action: action
+                    },
+                    success: function (data) {
+                        if (data !== "1") {
+                            $("#table-div").show();
+                            $("#table-div").html(data);
+                        } else {
+                            $.notify("Error", "warn");
+                        }
+                    }
+                });
+            });
+        });
+
+
+    </script>
+
+    <style>
+        .wishlist-table{
+            border-spacing: 5px;
+
+        }
+
+
+        .wishlist-data{
+            padding: 12px;
+
+        }
+    </style>
 
 </head>
 
@@ -150,7 +187,8 @@ if (!isset($_SESSION['bookly'])) {
 <?php
 if (isset($_SESSION['username'])) {
     $current = $_SESSION['username'];
-
+    $user_id = $user -> get_user($_SESSION['username']);
+    $id = $user_id -> fetch_array();
 }
 ?>
 
@@ -207,7 +245,7 @@ if (isset($_SESSION['username'])) {
                             <a class="dropdown-item" href="user_profile.php"><span
                                         class="glyphicon glyphicon-user"></span>&nbsp;View
                                 Profile</a>
-                            <a class="dropdown-item open" href="#" data-toggle = "modal" data-target = "#myModal"><span
+                            <a class="dropdown-item open" id="show-wishlist" href="#" data-toggle = "modal" data-target = "#myModal"><span
                                         class="glyphicon glyphicon-user"></span>&nbsp;My wishlist</a>
                             <a class="dropdown-item" href="logout.php"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign
                                 Out</a>
@@ -223,28 +261,11 @@ if (isset($_SESSION['username'])) {
 <!--/.end of navbar-->
 
 <div class="container">
-
-    <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Modal Header</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Some text in the modal.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-
+    <div class="modal-content" id="table-div"></div>
         </div>
     </div>
-
 </div>
 
 <!--Reviews-->
@@ -355,7 +376,7 @@ if (isset($_SESSION['username'])) {
                                         <td>
                                             <div style="position: relative">
                                                 <?php
-                                                if (isset($_SESSION['username'])) {
+                                                if (isset($_SESSION['username']) && $row -> username != $current) {
                                                     ?>
                                                     <button class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent"
                                                             id="<?php echo "menubtn-" . $counter; ?>"
@@ -364,7 +385,7 @@ if (isset($_SESSION['username'])) {
                                                            role="presentation">add</i>
                                                         <span class="visuallyhidden">add</span>
                                                     </button>
-                                                <?php } ?>
+                                                <?php }  ?>
                                                 <div class="mdl-card amazing mdl-cell mdl-cell--12-col"
                                                      id="<?php echo "review" . $row->reviewID; ?>">
 
@@ -420,7 +441,7 @@ if (isset($_SESSION['username'])) {
                                                     <li class="mdl-menu__item" id="author-info">Get author info</li>
                                                     <li class="mdl-menu__item" id="book-info">Get book info</li>
                                                     <li class="mdl-menu__item wishlist-add"
-                                                        id="<?php echo $row->userID . "-" . $row->authorID . "-" . $row->bookID; ?>">
+                                                        id="<?php echo $id['userID'] . "-" . $row->authorID . "-" . $row->bookID; ?>">
                                                         Add to wishlist
                                                     </li>
                                                     <li class="mdl-menu__item" id="share-review">Share</li>
@@ -489,6 +510,7 @@ require "imports/footer.php";
 
 <script type="text/javascript" src="js/jquery.rateyo.js"></script>
 
+<script type="text/javascript" src="js/notify.js"></script>
 
 </body>
 
