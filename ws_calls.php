@@ -31,6 +31,6 @@ if (isset ($_POST["action"]) && isset($_POST["user_id"]) && isset($_POST["author
 
 
 }else{
-    echo "<script> alert('Nisu GETavljeni svi parametri')</script>";
+    echo "<script> alert('Nisu postavljeni svi parametri')</script>";
 
 }

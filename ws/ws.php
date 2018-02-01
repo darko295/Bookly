@@ -318,17 +318,18 @@ Flight::route('GET /wishlist/@id.json', function ($user_id) {
     header("Content-Type: application/json; charset=utf-8");
     global $mysqli;
 
-    $query = "SELECT a.name, a.surname, b.bookTitle  FROM wishlist w JOIN author a ON w.authorID = a.authorID
-              JOIN book b ON a.authorID=b.authorID JOIN review r ON b.bookID=r.bookID JOIN user u ON u.userID=r.userID WHERE w.userID =" . $user_id;
+    $query = "SELECT a.name, a.surname, b.bookTitle, w.recordID  FROM wishlist w JOIN author a ON w.authorID = a.authorID
+              JOIN book b ON a.authorID=b.authorID JOIN review r ON b.bookID=r.bookID JOIN user u ON u.userID=r.userID WHERE w.userID =" . $user_id. "
+              AND w.authorID = a.authorID AND b.bookID = w.bookID";
     $result = $mysqli->query($query);
 
     $niz = array();
     $i = 0;
     while ($red = $result->fetch_object()) {
-
+        $niz[$i]["recordID"] = $red -> recordID;
         $niz[$i]["bookTitle"] = $red->bookTitle;
         $niz[$i]["name"] = $red->name;
-        $niz[$i]["surnname"] = $red->surname;
+        $niz[$i]["surname"] = $red->surname;
 
         $i++;
     }

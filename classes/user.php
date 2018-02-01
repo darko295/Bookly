@@ -15,12 +15,9 @@ include(dirname(__FILE__)."/../connection.php");
 
                  exit();
              } else {
-
                  return $result;
-
              }
          } else {
-
              echo "Greska prilikom konektovanja sa bazom";
 }
        $mysqli -> close();
