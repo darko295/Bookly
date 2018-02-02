@@ -53,8 +53,6 @@ if (!isset($_SESSION['bookly'])) {
     <link rel="stylesheet" href="css/_mixins.css">
 
 
-
-
     <script>
 
         $(function () {
@@ -87,39 +85,39 @@ if (!isset($_SESSION['bookly'])) {
     </script>
 
 
-<!--    <script>-->
-<!---->
-<!--        $(document).ready(function () {-->
-<!--            $("#search-box").keyup(function () {-->
-<!--                var vrednost = $("#search-box").val();-->
-<!--                if (vrednost.length > 0) {-->
-<!--                    $.get("predictive_search.php", {unos: vrednost},-->
-<!--                        function (data) {-->
-<!--                            $("#suggesstion-box").show();-->
-<!--                            $("#suggesstion-box").html(data);-->
-<!--                        });-->
-<!--                } else {-->
-<!--                    $("#suggesstion-box").hide();-->
-<!--                }-->
-<!--            });-->
-<!--        });-->
-<!---->
-<!--        function place(val) {-->
-<!--            $("#search-box").val(val.innerHTML);-->
-<!--            $("#suggesstion-box").hide();-->
-<!--        }-->
-<!---->
-<!---->
-<!--    </script>-->
+    <!--    <script>-->
+    <!---->
+    <!--        $(document).ready(function () {-->
+    <!--            $("#search-box").keyup(function () {-->
+    <!--                var vrednost = $("#search-box").val();-->
+    <!--                if (vrednost.length > 0) {-->
+    <!--                    $.get("predictive_search.php", {unos: vrednost},-->
+    <!--                        function (data) {-->
+    <!--                            $("#suggesstion-box").show();-->
+    <!--                            $("#suggesstion-box").html(data);-->
+    <!--                        });-->
+    <!--                } else {-->
+    <!--                    $("#suggesstion-box").hide();-->
+    <!--                }-->
+    <!--            });-->
+    <!--        });-->
+    <!---->
+    <!--        function place(val) {-->
+    <!--            $("#search-box").val(val.innerHTML);-->
+    <!--            $("#suggesstion-box").hide();-->
+    <!--        }-->
+    <!---->
+    <!---->
+    <!--    </script>-->
 
     <script>
         $(document).ready(function () {
             $(".wishlist-add").click(function () {
                 var info = ($(this).attr("id")).split('-');
-                var action = "wishlist";
-                var book_id = info[2];
-                var author_id = info[1];
-                var user_id = info[0];
+                var action = info[0];
+                var book_id = info[3];
+                var author_id = info[2];
+                var user_id = info[1];
                 $.ajax({
                     type: "POST",
                     url: "ws_calls.php",
@@ -143,10 +141,60 @@ if (!isset($_SESSION['bookly'])) {
 
     </script>
 
+
     <script>
+
+        function refresh() {
+            var action = "nesto";
+            $.ajax({
+                type: "POST",
+                url: "wishlist_ajax.php",
+                data: {
+                    action: action
+                },
+                success: function (data) {
+                    if (data !== "1") {
+                        $("#table-div").show();
+                        $("#table-div").html(data);
+                    } else {
+                        $.notify("Error occurred", "warn");
+                    }
+                }
+            });
+
+        }
+
+    </script>
+
+    <script type="text/javascript">
+        function obrisi(record_id) {
+            $.ajax({
+                type: "POST",
+                url: "ws_delete.php",
+                data: {
+                    record_id: record_id
+                },
+                success: function (result) {
+                    if (result === "0") {
+                        alert("Greska");
+                    } else {
+                        var row = "#delete-item-" + record_id;
+                        $.notify("Deleting successful", "success");
+                        $(row).parent().parent().remove();
+                        refresh();
+                    }
+                }
+            });
+
+        }
+
+    </script>
+
+    <script>
+
         $(document).ready(function () {
             $("#show-wishlist").click(function () {
-    var action = "nesto";
+                var action = "nesto";
                 $.ajax({
                     type: "POST",
                     url: "wishlist_ajax.php",
@@ -158,7 +206,7 @@ if (!isset($_SESSION['bookly'])) {
                             $("#table-div").show();
                             $("#table-div").html(data);
                         } else {
-                            $.notify("Error", "warn");
+                            $.notify("Error occurred", "warn");
                         }
                     }
                 });
@@ -168,15 +216,57 @@ if (!isset($_SESSION['bookly'])) {
 
     </script>
 
+<!--    <script>-->
+<!--        $(document).ready(function () {-->
+<!--            $(".more-info").click(function () {-->
+<!--                var info = ($(this).attr("id")).split('-');-->
+<!--                var action = info[0];-->
+<!--                var book_title = info[3];-->
+<!--                var author_surname = info[2];-->
+<!--                var author_name = info[1];-->
+<!--                var text = '&text="';-->
+<!--                var parts = book_title.split(' ');-->
+<!---->
+<!--                foreach(var part in parts){-->
+<!--                    text= text +' '+ part;-->
+<!---->
+<!--                }-->
+<!--                text+='"';-->
+<!--                var path = 'https://translate.yandex.net/api/v1.5/tr.json/translate?key=';-->
+<!--                var key = 'trnsl.1.1.20180129T133050Z.14eedc27f3e893e1.6e2e470cfd6bab2cc4ce89a26993ddd5d364b0bb';-->
+<!--                var lang = '&lang=hr-en';-->
+<!---->
+<!--                var url = 'http://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20180129T133050Z.14eedc27f3e893e1.6e2e470cfd6bab2cc4ce89a26993ddd5d364b0bb&text="mala"&lang=hr-en';-->
+<!--                var res = encodeURI(url);-->
+<!---->
+<!---->
+<!--                $.ajax({-->
+<!--                    type: "GET",-->
+<!--                    url: res,-->
+<!--                    dataType: 'json',-->
+<!--                    contentType: 'application/json; charset=utf-8',-->
+<!--                    success: function (response) {-->
+<!--                        if (response === "1") {-->
+<!--                            alert("Ovde sam");-->
+<!--                        } else {-->
+<!--                            alert("Ovde sam ipak");-->
+<!--                        }-->
+<!--                    }-->
+<!--                });-->
+<!--            });-->
+<!--        });-->
+<!---->
+<!---->
+<!--    </script>-->
+
     <style>
-        .wishlist-table{
+        .wishlist-table {
             border-spacing: 5px;
 
         }
 
-
-        .wishlist-data{
-            padding: 12px;
+        .wishlist-data {
+            padding: 20px;
 
         }
     </style>
@@ -187,8 +277,8 @@ if (!isset($_SESSION['bookly'])) {
 <?php
 if (isset($_SESSION['username'])) {
     $current = $_SESSION['username'];
-    $user_id = $user -> get_user($_SESSION['username']);
-    $id = $user_id -> fetch_array();
+    $user_id = $user->get_user($_SESSION['username']);
+    $id = $user_id->fetch_array();
 }
 ?>
 
@@ -245,7 +335,8 @@ if (isset($_SESSION['username'])) {
                             <a class="dropdown-item" href="user_profile.php"><span
                                         class="glyphicon glyphicon-user"></span>&nbsp;View
                                 Profile</a>
-                            <a class="dropdown-item open" id="show-wishlist" href="#" data-toggle = "modal" data-target = "#myModal"><span
+                            <a class="dropdown-item open" id="show-wishlist" href="#" data-toggle="modal"
+                               data-target="#myModal"><span
                                         class="glyphicon glyphicon-user"></span>&nbsp;My wishlist</a>
                             <a class="dropdown-item" href="logout.php"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign
                                 Out</a>
@@ -260,13 +351,36 @@ if (isset($_SESSION['username'])) {
 
 <!--/.end of navbar-->
 
+<!--Modal za wishlist-->
 <div class="container">
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
-    <div class="modal-content" id="table-div"></div>
+            <div class="modal-content" id="table-div"></div>
         </div>
     </div>
 </div>
+
+
+<!--Modal za book-->
+<div class="container">
+    <div class="modal fade" id="myModal1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content" id="table1-div">
+                <div class="modal-header" style="position:relative">
+                    <button type="button" class="close" data-dismiss="modal" style="position: absolute; top: 10px; right:10px">&times;</button>
+                    <h4 class="modal-title left">Modal Header</h4>
+                </div>
+                <div class="modal-body" id="more-info-results">
+                    <p ></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!--Reviews-->
 <div class="view hm-black-light">
@@ -280,7 +394,6 @@ if (isset($_SESSION['username'])) {
                         if (!isset($_SESSION['username'])) {
                             ?>
                             <div class="mdl-card book-pic mdl-cell mdl-cell--8-col">
-
                                 <div class="mdl-card__media mdl-color-text--grey-50">
                                     <a href="index.php"><h3>Registruj se i ti!</a></h3>
                                 </div>
@@ -295,7 +408,6 @@ if (isset($_SESSION['username'])) {
                             <?php
                         } else {
                             ?>
-
 
                             <div class="mdl-card  mdl-cell mdl-cell--8-col" style="background-color: #e0e0e0">
                                 <h3 style="font-family: 'Xiomara-Script'; padding: 10px">Add new review</h3>
@@ -323,7 +435,6 @@ if (isset($_SESSION['username'])) {
                                                        type="text" name="author_surname" required
                                                        placeholder="Author surname">
                                             </div>
-
                                         </div>
                                         <div class="rateYo">Rating:</div>
                                         <input type="hidden" value="-1" name="stars_rating" id="stars-rating">
@@ -338,7 +449,8 @@ if (isset($_SESSION['username'])) {
 
 
                                         <button type="submit" class="btn-grey btn" id="review-button"
-                                                name="review_button" style="width: 25%; margin-left: 0">Send review
+                                                name="review_button"
+                                                style="width: 25%; margin-left: 0; margin-bottom: 15px;">Send review
                                         </button>
 
 
@@ -376,7 +488,7 @@ if (isset($_SESSION['username'])) {
                                         <td>
                                             <div style="position: relative">
                                                 <?php
-                                                if (isset($_SESSION['username']) && $row -> username != $current) {
+                                                if (isset($_SESSION['username']) && $row->username != $current) {
                                                     ?>
                                                     <button class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent"
                                                             id="<?php echo "menubtn-" . $counter; ?>"
@@ -385,7 +497,7 @@ if (isset($_SESSION['username'])) {
                                                            role="presentation">add</i>
                                                         <span class="visuallyhidden">add</span>
                                                     </button>
-                                                <?php }  ?>
+                                                <?php } ?>
                                                 <div class="mdl-card amazing mdl-cell mdl-cell--12-col"
                                                      id="<?php echo "review" . $row->reviewID; ?>">
 
@@ -439,9 +551,13 @@ if (isset($_SESSION['username'])) {
                                                 <ul class="mdl-menu mdl-js-menu mdl-menu--right mdl-js-ripple-effect"
                                                     for="<?php echo "menubtn-" . $counter; ?>">
                                                     <li class="mdl-menu__item" id="author-info">Get author info</li>
-                                                    <li class="mdl-menu__item" id="book-info">Get book info</li>
+                                                    <li class="mdl-menu__item more-info" data-toggle="modal"
+                                                        data-target="#myModal1"
+                                                        id="<?php echo "moreinfo-" . $row->name . "-" . $row->surname . "-" . $row->bookTitle; ?>">
+                                                        Get book info
+                                                    </li>
                                                     <li class="mdl-menu__item wishlist-add"
-                                                        id="<?php echo $id['userID'] . "-" . $row->authorID . "-" . $row->bookID; ?>">
+                                                        id="<?php echo "wishlist-" . $id['userID'] . "-" . $row->authorID . "-" . $row->bookID; ?>">
                                                         Add to wishlist
                                                     </li>
                                                     <li class="mdl-menu__item" id="share-review">Share</li>
@@ -475,13 +591,8 @@ if (isset($_SESSION['username'])) {
 </div>
 
 
-
-
-
 </div>
 <!--/end of review section-->
-
-
 
 
 <!--Footer-->

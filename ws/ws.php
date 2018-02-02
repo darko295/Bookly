@@ -318,9 +318,8 @@ Flight::route('GET /wishlist/@id.json', function ($user_id) {
     header("Content-Type: application/json; charset=utf-8");
     global $mysqli;
 
-    $query = "SELECT a.name, a.surname, b.bookTitle, w.recordID  FROM wishlist w JOIN author a ON w.authorID = a.authorID
-              JOIN book b ON a.authorID=b.authorID JOIN review r ON b.bookID=r.bookID JOIN user u ON u.userID=r.userID WHERE w.userID =" . $user_id. "
-              AND w.authorID = a.authorID AND b.bookID = w.bookID";
+    $query = "SELECT a.name, a.surname, b.bookTitle, w.recordID  FROM wishlist w JOIN user u ON w.userID = u.userID
+            JOIN author a ON w.authorID = a.authorID JOIN book b ON b.bookID = w.bookID WHERE w.userID = ".$user_id;
     $result = $mysqli->query($query);
 
     $niz = array();
@@ -357,6 +356,7 @@ Flight::route('GET /authors/@id.json', function ($id) {
     echo indent($json_niz);
     return false;
 });
+
 // dodaj u wishlist
 Flight::route('POST /wishlist', function () {
     header("Content-Type: application/json; charset=utf-8");
@@ -395,6 +395,24 @@ Flight::route('POST /wishlist', function () {
     }
 });
 
+// izbrisi iz wishlista
+
+Flight::route('DELETE /wishlist/delete/record_id=@id', function ($record_id) {
+    global $mysqli;
+    $sql ="DELETE FROM wishlist WHERE recordID =".$record_id;
+    if ($q = $mysqli->query($sql)) {
+        $odgovor["poruka"] = "Item deleted successefuly";
+        $json_odgovor = json_encode($odgovor, JSON_UNESCAPED_UNICODE);
+        echo $json_odgovor;
+        return false;
+    } else {
+        $odgovor["poruka"] = "Error deleting item from wishlist";
+        $json_odgovor = json_encode($odgovor, JSON_UNESCAPED_UNICODE);
+        echo $json_odgovor;
+        return false;
+
+    }
+});
 
 //XML
 
@@ -427,6 +445,43 @@ Flight::route('GET /authors.xml', function () {
         }else{
             $error = $authors->appendChild($dom->createElement('error'));
             $error->appendChild($dom->createTextNode("No authors to show"));
+        }
+    }
+    $xml_string = $dom->saveXML();
+    echo $xml_string;
+    $mysqli->close();
+
+    return false;
+});
+
+//daj autora sa odredjenim ID-jem
+Flight::route('GET /authors/@id.xml', function ($id) {
+    header("Content-Type: application/xml; charset=utf-8");
+    global $mysqli;
+    $query = "SELECT * FROM author WHERE authorID =".$id;
+    $dom = new DomDocument('1.0', 'utf-8');
+    $author = $dom->appendChild($dom->createElement('author'));
+    if (!$result = $mysqli->query($query)) {
+        $error = $author->appendChild($dom->createElement('error'));
+        $error->appendChild($dom->createTextNode("Error while executing query"));
+    } else {
+        if (mysqli_num_rows($result) === 1) {
+
+            $red = $result->fetch_object();
+
+
+                $authorID = $author->appendChild($dom->createElement('authorID'));
+                $authorID -> appendChild($dom->createTextNode($red->authorID));
+
+                $name = $author->appendChild($dom->createElement('name'));
+                $name->appendChild($dom->createTextNode($red->name));
+
+                $surname = $author->appendChild($dom->createElement('surnname'));
+                $surname->appendChild($dom->createTextNode($red->surname));
+
+        }else{
+            $error = $author->appendChild($dom->createElement('error'));
+            $error->appendChild($dom->createTextNode("No author with that id"));
         }
     }
     $xml_string = $dom->saveXML();
