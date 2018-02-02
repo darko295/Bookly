@@ -1,7 +1,6 @@
 <?php
 session_start();
 if(!isset($_SESSION['username']))
-    echo "<script> window.location.href = 'bookly.php'; </script>";
 include "classes/user.php";
 $user = new user();
 
@@ -54,7 +53,7 @@ if(count($json_objekat) == 0) {
         echo '<td class="wishlist-data">' . $vrednost->bookTitle . '</td>';
         echo '<td class="wishlist-data">' . $vrednost->name . " " . $vrednost->surname . '</td>';
         echo '<td class="wishlist-data">';
-        echo '<button class="btn - blue btn" type="button" onclick="obrisi(' . $vrednost->recordID . ')">Obrisi</button>';
+        echo '<button class="btn-blue btn" id="delete-item-'. $vrednost->recordID .'" type="button" onclick="obrisi(' . $vrednost->recordID . ')">Delete</button>';
         echo '</td>';
         echo '</tr>';
         $count = $count + 1;

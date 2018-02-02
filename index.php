@@ -171,7 +171,7 @@ $stats -> incrementTotalViews(basename($_SERVER["SCRIPT_FILENAME"]));
 
                         <div class="mdl-card on-the-road-again mdl-cell mdl-cell--12-col">
                             <div class="mdl-card__media mdl-color-text--grey-50">
-                                <h3>Saljite nam fotografije sa vasih putovanja</a>
+                                <h3>Saljite nam fotografije sa vasih putovanja</h3>
                             </div>
                             <div class="mdl-color-text--grey-600 mdl-card__supporting-text">
                                 Uskoro u sklopu portala Bookly nova sekcija. Ovoga puta okrecemo se fotografiji kako bismo upotpunili dozivljaj svim

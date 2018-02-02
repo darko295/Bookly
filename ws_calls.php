@@ -10,6 +10,9 @@ include "connection.php";
         } else {
             echo "Error. You may want to add item that already exist in your wishlist.";
         }
+
+
+
     }
 
 
@@ -28,9 +31,6 @@ if (isset ($_POST["action"]) && isset($_POST["user_id"]) && isset($_POST["author
     }
 
 
-
-
 }else{
-    echo "<script> alert('Nisu postavljeni svi parametri')</script>";
-
+echo "0";
 }
