@@ -4,7 +4,7 @@ session_start();
 
 
 include "classes/review.php";
-$review_index = new review();
+$review = new review();
 
 include "classes/user.php";
 $user = new user();
@@ -189,11 +189,11 @@ $stats -> incrementTotalViews(basename($_SERVER["SCRIPT_FILENAME"]));
 
 
                         <?php
-                        $result = $review_index->getLatest();
+                        $result = $review->getLatest();
                         if ($result == null) {
                             echo "<script> alert('Doslo je do greske prilikom komunikacije sa bazom, ponovo ucitajte stranicu'); </script>";
                         }
-                        if ($result->num_rows == 0) {
+                        if (mysqli_num_rows($result) == 0) {
                             echo "<script> alert('Lista utisaka je prazna.'); </script>";
                         } else {
                             $latest = $result->fetch_object();

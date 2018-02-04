@@ -53,211 +53,8 @@ if (!isset($_SESSION['bookly'])) {
     <link rel="stylesheet" href="css/_mixins.css">
 
 
-    <script>
+    <script type="text/javascript" src="js/bookly.js"></script>
 
-        $(function () {
-
-            $(".rateYo").rateYo({rating: 0, ratedFill: "#000", halfStar: true})
-                .on("rateyo.set", function (e, data) {
-                    document.getElementById("stars-rating").value = data.rating;
-                });
-
-
-        });
-
-    </script>
-
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $(".remove-row").click(function () {
-                var value = ($(this).attr("id")).substring(7);
-                var table_row = $(this);
-                $.get("delete_review.php", {reviewID: value},
-                    function (data) {
-                        if (data == 1) {
-                            $.notify("Review deleted", "success");
-                            $(table_row).parent().parent().parent().remove();
-                        }
-                    });
-            });
-        });
-    </script>
-
-
-    <!--    <script>-->
-    <!---->
-    <!--        $(document).ready(function () {-->
-    <!--            $("#search-box").keyup(function () {-->
-    <!--                var vrednost = $("#search-box").val();-->
-    <!--                if (vrednost.length > 0) {-->
-    <!--                    $.get("predictive_search.php", {unos: vrednost},-->
-    <!--                        function (data) {-->
-    <!--                            $("#suggesstion-box").show();-->
-    <!--                            $("#suggesstion-box").html(data);-->
-    <!--                        });-->
-    <!--                } else {-->
-    <!--                    $("#suggesstion-box").hide();-->
-    <!--                }-->
-    <!--            });-->
-    <!--        });-->
-    <!---->
-    <!--        function place(val) {-->
-    <!--            $("#search-box").val(val.innerHTML);-->
-    <!--            $("#suggesstion-box").hide();-->
-    <!--        }-->
-    <!---->
-    <!---->
-    <!--    </script>-->
-
-    <script>
-        $(document).ready(function () {
-            $(".wishlist-add").click(function () {
-                var info = ($(this).attr("id")).split('-');
-                var action = info[0];
-                var book_id = info[3];
-                var author_id = info[2];
-                var user_id = info[1];
-                $.ajax({
-                    type: "POST",
-                    url: "ws_calls.php",
-                    data: {
-                        author_id: author_id,
-                        user_id: user_id,
-                        book_id: book_id,
-                        action: action
-                    },
-                    success: function (data) {
-                        if (data === "1") {
-                            $.notify("Item added", "success");
-                        } else {
-                            alert(data);
-                        }
-                    }
-                });
-            });
-        });
-
-
-    </script>
-
-
-    <script>
-
-        function refresh() {
-            var action = "nesto";
-            $.ajax({
-                type: "POST",
-                url: "wishlist_ajax.php",
-                data: {
-                    action: action
-                },
-                success: function (data) {
-                    if (data !== "1") {
-                        $("#table-div").show();
-                        $("#table-div").html(data);
-                    } else {
-                        $.notify("Error occurred", "warn");
-                    }
-                }
-            });
-
-        }
-
-    </script>
-
-    <script type="text/javascript">
-        function obrisi(record_id) {
-            $.ajax({
-                type: "POST",
-                url: "ws_delete.php",
-                data: {
-                    record_id: record_id
-                },
-                success: function (result) {
-                    if (result === "0") {
-                        alert("Greska");
-                    } else {
-                        var row = "#delete-item-" + record_id;
-                        $.notify("Deleting successful", "success");
-                        $(row).parent().parent().remove();
-                        refresh();
-                    }
-                }
-            });
-
-        }
-
-    </script>
-
-    <script>
-
-        $(document).ready(function () {
-            $("#show-wishlist").click(function () {
-                var action = "nesto";
-                $.ajax({
-                    type: "POST",
-                    url: "wishlist_ajax.php",
-                    data: {
-                        action: action
-                    },
-                    success: function (data) {
-                        if (data !== "1") {
-                            $("#table-div").show();
-                            $("#table-div").html(data);
-                        } else {
-                            $.notify("Error occurred", "warn");
-                        }
-                    }
-                });
-            });
-        });
-
-
-    </script>
-
-<!--    <script>-->
-<!--        $(document).ready(function () {-->
-<!--            $(".more-info").click(function () {-->
-<!--                var info = ($(this).attr("id")).split('-');-->
-<!--                var action = info[0];-->
-<!--                var book_title = info[3];-->
-<!--                var author_surname = info[2];-->
-<!--                var author_name = info[1];-->
-<!--                var text = '&text="';-->
-<!--                var parts = book_title.split(' ');-->
-<!---->
-<!--                foreach(var part in parts){-->
-<!--                    text= text +' '+ part;-->
-<!---->
-<!--                }-->
-<!--                text+='"';-->
-<!--                var path = 'https://translate.yandex.net/api/v1.5/tr.json/translate?key=';-->
-<!--                var key = 'trnsl.1.1.20180129T133050Z.14eedc27f3e893e1.6e2e470cfd6bab2cc4ce89a26993ddd5d364b0bb';-->
-<!--                var lang = '&lang=hr-en';-->
-<!---->
-<!--                var url = 'http://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20180129T133050Z.14eedc27f3e893e1.6e2e470cfd6bab2cc4ce89a26993ddd5d364b0bb&text="mala"&lang=hr-en';-->
-<!--                var res = encodeURI(url);-->
-<!---->
-<!---->
-<!--                $.ajax({-->
-<!--                    type: "GET",-->
-<!--                    url: res,-->
-<!--                    dataType: 'json',-->
-<!--                    contentType: 'application/json; charset=utf-8',-->
-<!--                    success: function (response) {-->
-<!--                        if (response === "1") {-->
-<!--                            alert("Ovde sam");-->
-<!--                        } else {-->
-<!--                            alert("Ovde sam ipak");-->
-<!--                        }-->
-<!--                    }-->
-<!--                });-->
-<!--            });-->
-<!--        });-->
-<!---->
-<!---->
-<!--    </script>-->
 
     <style>
         .wishlist-table {
@@ -318,11 +115,11 @@ if (isset($_SESSION['username'])) {
                         </li>
                     <?php } ?>
             </ul>
-            <div class="form" style="margin-bottom: -5px">
-                <input class="form-control mr-sm-2" id="search-box" type="text" placeholder="Search" aria-label="Search"
-                       style="padding: 1px;color: #FFF;">
-                <div id="suggesstion-box" style="color: #FFF;"></div>
-            </div>
+            <!--            <div class="form" style="margin-bottom: -5px">-->
+            <!--                <input class="form-control mr-sm-2" id="search-box" type="text" placeholder="Search" aria-label="Search"-->
+            <!--                       style="padding: 1px;color: #FFF;">-->
+            <!--                <div id="suggesstion-box" style="color: #FFF;"></div>-->
+            <!--            </div>-->
             <?php
             if (isset($_SESSION['username'])) {
                 ?>
@@ -351,36 +148,9 @@ if (isset($_SESSION['username'])) {
 
 <!--/.end of navbar-->
 
-<!--Modal za wishlist-->
-<div class="container">
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content" id="table-div"></div>
-        </div>
-    </div>
-</div>
-
-
-<!--Modal za book-->
-<div class="container">
-    <div class="modal fade" id="myModal1" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content" id="table1-div">
-                <div class="modal-header" style="position:relative">
-                    <button type="button" class="close" data-dismiss="modal" style="position: absolute; top: 10px; right:10px">&times;</button>
-                    <h4 class="modal-title left">Modal Header</h4>
-                </div>
-                <div class="modal-body" id="more-info-results">
-                    <p ></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
+<?php
+require "imports/modals.php";
+?>
 
 <!--Reviews-->
 <div class="view hm-black-light">
@@ -550,17 +320,21 @@ if (isset($_SESSION['username'])) {
                                                 </div>
                                                 <ul class="mdl-menu mdl-js-menu mdl-menu--right mdl-js-ripple-effect"
                                                     for="<?php echo "menubtn-" . $counter; ?>">
-                                                    <li class="mdl-menu__item" id="author-info">Get author info</li>
-                                                    <li class="mdl-menu__item more-info" data-toggle="modal"
-                                                        data-target="#myModal1"
-                                                        id="<?php echo "moreinfo-" . $row->name . "-" . $row->surname . "-" . $row->bookTitle; ?>">
-                                                        Get book info
-                                                    </li>
                                                     <li class="mdl-menu__item wishlist-add"
                                                         id="<?php echo "wishlist-" . $id['userID'] . "-" . $row->authorID . "-" . $row->bookID; ?>">
                                                         Add to wishlist
                                                     </li>
-                                                    <li class="mdl-menu__item" id="share-review">Share</li>
+                                                    <li class="mdl-menu__item more-by-this-author"
+                                                        id="<?php echo "morebyauthor-" . $row->name . "-" . $row->surname; ?>"
+                                                        data-toggle="modal"
+                                                        data-target="#myModal2">More by this author
+                                                    </li>
+                                                    <li class="mdl-menu__item more-info" data-toggle="modal"
+                                                        data-target="#myModal1"
+                                                        id="<?php echo "moreinfo-" . $row->name . "-" . $row->surname . "-" . $row->bookTitle; ?>">
+                                                        Get author info
+                                                    </li>
+
                                                 </ul>
                                             </div>
                                         </td>
@@ -570,27 +344,20 @@ if (isset($_SESSION['username'])) {
                                     $counter = $counter + 1;
                                 }
                                 ?>
-
                             </table>
                             <?php
                         }
                         ?>
-
                     </div>
-
                 </main>
                 <div class="mdl-layout__obfuscator"></div>
             </div>
             <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-
     </div>
 </div>
 </li>
-
 </ul>
 </div>
-
-
 </div>
 <!--/end of review section-->
 
@@ -601,9 +368,7 @@ if (isset($_SESSION['username'])) {
 require "imports/footer.php";
 ?>
 
-
 <!--/.Footer-->
-
 
 <!-- SCRIPTS -->
 
@@ -618,9 +383,7 @@ require "imports/footer.php";
 
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="js/mdb.min.js"></script>
-
 <script type="text/javascript" src="js/jquery.rateyo.js"></script>
-
 <script type="text/javascript" src="js/notify.js"></script>
 
 </body>

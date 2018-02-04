@@ -1,11 +1,10 @@
 <?php
 session_start();
-if(!isset($_SESSION['username']))
 include "classes/user.php";
-$user = new user();
+$user1 = new user();
+if(isset($_POST['action'])){
 
-
-$result = $user -> get_user($_SESSION['username']);
+$result = $user1 -> get_user($_SESSION['username']);
 $assoc = $result -> fetch_array();
 $url = "localhost/domaci_1/ws/wishlist/".$assoc['userID'].".json";
 $curl_zahtev = curl_init($url);
@@ -32,7 +31,7 @@ if(count($json_objekat) == 0) {
 
     echo '<div class="modal-header" style="position:relative">';
     echo '<button type="button" class="close" data-dismiss="modal" style="position: absolute; top: 10px; right:10px">&times;</button>';
-    echo ' <h4 class="modal-title left">You have ' . count($json_objekat) . ' item(s) in your wishlist"</h4></div>';
+    echo ' <h4 class="modal-title left">You have ' . count($json_objekat) . ' item(s) in your wishlist</h4></div>';
     echo '<div class="modal-body">';
     echo '<div class="table-responsive">';
 
@@ -53,7 +52,7 @@ if(count($json_objekat) == 0) {
         echo '<td class="wishlist-data">' . $vrednost->bookTitle . '</td>';
         echo '<td class="wishlist-data">' . $vrednost->name . " " . $vrednost->surname . '</td>';
         echo '<td class="wishlist-data">';
-        echo '<button class="btn-blue btn" id="delete-item-'. $vrednost->recordID .'" type="button" onclick="obrisi(' . $vrednost->recordID . ')">Delete</button>';
+        echo '<button class="btn-red btn btn-md" id="delete-item-'. $vrednost->recordID .'" type="button" onclick="obrisi(' . $vrednost->recordID . ')">Delete</button>';
         echo '</td>';
         echo '</tr>';
         $count = $count + 1;
@@ -65,5 +64,9 @@ if(count($json_objekat) == 0) {
     echo '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
     echo '</div>';
 
+
+}
+}else{
+    echo "0";
 }
 
