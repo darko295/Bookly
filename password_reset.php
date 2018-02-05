@@ -1,26 +1,20 @@
 <?php
 include "connection.php";
-if(isset($_POST['email'])){
-    $email = $_POST['email'];
 
-    $sql="SELECT * FROM user WHERE email='".$email."'";
-    $rezultat = $mysqli->query($sql);
-    if ($rezultat->num_rows == 0){
+if (isset($_POST['email'])) {
+    $email = $_POST['email'];
+    include "classes/user.php";
+    $user = new user();
+
+    $result = $user->get_user_by_email($email);
+    if ($result->num_rows === 0) {
         echo "0";
     } else {
-        include "classes/user.php";
-
-        $user = new user();
-        $user -> sendMail($email);
+        $user->sendMail($email);
         echo "1";
-
-
-
-
     }
     $mysqli->close();
 
-
-}else{
+} else {
     echo "Uneti podatke!";
 }

@@ -6,18 +6,13 @@ $user = new user();
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-
         if ($user->login($username, $password)) {
             $_SESSION['username'] = $username;
             $_SESSION['loggedin'] = true;
 
             echo '<script>window.location.href = "bookly.php"; </script>';
 
-
             return true;
-
         }
     }
     return false;
-
-

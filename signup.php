@@ -1,10 +1,3 @@
-<html>
-<head>
-    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-</head>
-
-<body>
-
 <?php
 
 if (isset($_POST['create_submit'])) {
@@ -18,36 +11,12 @@ if (isset($_POST['create_submit'])) {
         $password = trim($password);
         $mail = trim($mail);
 
-
         include "connection.php";
-
-        $sql = "INSERT INTO user (username,password,email,active) VALUES ('" . $username . "', '" . $password . "', '" . $mail . "',0)";
-
-        if ($mysqli->query($sql)) {
-            ?>
-            <script>
-                window.location.href = "index.php";
-                alert("Uspesna registracija, molimo ulogujte se!");
-            </script>
-        <?php
-        } else {
-        ?>
-            <script>
-                window.location.href = "#0";
-            </script>
-            <?php
-            echo "<p>Nastala je greška pri ubacivanju korisnika</p>" . $mysqli->error;
-        }
-
+        include "classes/user.php";
+        $user = new user();
+        $user -> create_account($username,$password,$mail,0);
 
     } else {
-        alert("Nedostajuci podaci!");
+       echo '<script> alert("Nedostajuci podaci!")</script>';
     }
-
-    $mysqli->close();
 }
-?>
-
-
-</body>
-</html>

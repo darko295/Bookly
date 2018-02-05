@@ -1,5 +1,4 @@
 <html>
-
 <head>
 </head>
 <body>
@@ -10,7 +9,7 @@
         <div style="font-family:Xiomara-Script; font-size: 30px; padding-bottom: 25px">Bookly</div>
         <img src="images/logo.png">
         <?php
-        $result = $review->getStats();
+        $result = $stats->getStats();
         $row = $result->fetch_object();
         ?>
         <ul>

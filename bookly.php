@@ -115,11 +115,6 @@ if (isset($_SESSION['username'])) {
                         </li>
                     <?php } ?>
             </ul>
-            <!--            <div class="form" style="margin-bottom: -5px">-->
-            <!--                <input class="form-control mr-sm-2" id="search-box" type="text" placeholder="Search" aria-label="Search"-->
-            <!--                       style="padding: 1px;color: #FFF;">-->
-            <!--                <div id="suggesstion-box" style="color: #FFF;"></div>-->
-            <!--            </div>-->
             <?php
             if (isset($_SESSION['username'])) {
                 ?>
@@ -387,5 +382,4 @@ require "imports/footer.php";
 <script type="text/javascript" src="js/notify.js"></script>
 
 </body>
-
 </html>

@@ -86,5 +86,14 @@ class stats
 
 
         }
+    public function getStats()
+    {
+        global $mysqli;
+        $sql = "SELECT (SELECT COUNT(*) FROM book) AS bookCount, (SELECT COUNT(*) FROM   user) AS userCount,(SELECT COUNT(*) FROM   review) AS reviewCount FROM DUAL";
+        if ($rezultat = $mysqli->query($sql)) {
+            return $rezultat;
+        }
+        return null;
+    }
 
 }

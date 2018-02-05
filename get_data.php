@@ -2,9 +2,7 @@
 <?php
 
 include "connection.php";
-$string = "bookly.php";
-$string1 = "index.php";
-$sql="SELECT * FROM dailyviews WHERE page = '".$string."' OR page = '".$string1."' ORDER BY views_date DESC";
+$sql="SELECT * FROM dailyviews WHERE page = 'bookly.php' OR page = 'index.php' ORDER BY views_date DESC";
 if (!$q=$mysqli->query($sql)){
     $json_podaci = '{"error":"Nastala je greška pri izvršavanju upita."}';
 } else {
@@ -26,7 +24,7 @@ fwrite($fajl, $json_podaci);
 fclose($fajl);
 
 
-$sql1="SELECT * FROM totalviews WHERE page_total = '".$string."' OR page_total = '".$string1."' ORDER BY id_total DESC";
+$sql1="SELECT * FROM totalviews WHERE page_total = 'bookly.php' OR page_total = 'index.php' ORDER BY id_total DESC";
 if (!$q1=$mysqli->query($sql1)){
     $json_podaci1 = '{"error":"Nastala je greška pri izvršavanju upita."}';
 } else {

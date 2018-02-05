@@ -79,12 +79,11 @@
                 },
                 success: function (result) {
                     if (result === "1") {
-
                         form.reset();
-                        alert("Dodato");
+                        $.notify("Question sent", "success");
 
                     } else {
-                        alert("Greska");
+                        $.notify(result, "warn");
                     }
                 }
             });

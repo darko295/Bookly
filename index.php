@@ -1,7 +1,5 @@
-<!DOCTYPE html>
 <?php
 session_start();
-
 
 include "classes/review.php";
 $review = new review();
@@ -13,32 +11,25 @@ include "classes/stats.php";
 $stats = new stats();
 
 
-
-if(!isset($_SESSION['index'])){
+if (!isset($_SESSION['index'])) {
     $_SESSION['index'] = true;
-$stats -> incrementDailyViews(basename($_SERVER["SCRIPT_FILENAME"]));
-    if(!isset($_SESSION['bookly'])){
-$stats -> incrementTotalViews(basename($_SERVER["SCRIPT_FILENAME"]));
+    $stats->incrementDailyViews(basename($_SERVER["SCRIPT_FILENAME"]));
+    if (!isset($_SESSION['bookly'])) {
+        $stats->incrementTotalViews(basename($_SERVER["SCRIPT_FILENAME"]));
     }
 }
 
-
 ?>
-
-
 <html>
-
 <head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-
     <title>Bookly | Home page</title>
 
     <link rel="shortcut icon" href="https://d1r7943vfkqpts.cloudfront.net/ccad7baaa6aea631c4c825c1e3a11921.png"/>
-
 
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -57,10 +48,7 @@ $stats -> incrementTotalViews(basename($_SERVER["SCRIPT_FILENAME"]));
     <!-- JS -->
     <script src="js/modernizr.js"></script>
     <script src="js/jquery-3.1.1.js"></script>
-
-
-
-
+    <script type="text/javascript" src="js/login_signup_form.js"></script>
 
 
 </head>
@@ -93,13 +81,13 @@ $stats -> incrementTotalViews(basename($_SERVER["SCRIPT_FILENAME"]));
                     </div>
                 </li>
                 <?php
-                if(isset($_SESSION['username']))
-                if($user-> is_admin($_SESSION['username'])){
-                ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="admin_panel.php">Admin panel</a>
-                </li>
-                <?php } ?>
+                if (isset($_SESSION['username']))
+                    if ($user->is_admin($_SESSION['username'])) {
+                        ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin_panel.php">Admin panel</a>
+                        </li>
+                    <?php } ?>
             </ul>
             <?php
             if (!isset($_SESSION['username'])) {
@@ -123,7 +111,8 @@ $stats -> incrementTotalViews(basename($_SERVER["SCRIPT_FILENAME"]));
                            aria-haspopup="true" aria-expanded="false">
                             <span class="glyphicon glyphicon-user"></span>&nbsp;Hi <?php echo $current; ?>&nbsp;</a>
                         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="user_profile.php"><span class="glyphicon glyphicon-user"></span>&nbsp;View
+                            <a class="dropdown-item" href="user_profile.php"><span
+                                        class="glyphicon glyphicon-user"></span>&nbsp;View
                                 Profile</a>
                             <a class="dropdown-item" href="logout.php"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign
                                 Out</a>
@@ -139,7 +128,7 @@ $stats -> incrementTotalViews(basename($_SERVER["SCRIPT_FILENAME"]));
 <!--/.Navbar-->
 
 <?php
-    require "imports/login_signup_form.php";
+require "imports/login_signup_form.php";
 ?>
 
 
@@ -168,14 +157,15 @@ $stats -> incrementTotalViews(basename($_SERVER["SCRIPT_FILENAME"]));
                         require "imports/stats_block.php";
                         ?>
 
-
                         <div class="mdl-card on-the-road-again mdl-cell mdl-cell--12-col">
                             <div class="mdl-card__media mdl-color-text--grey-50">
                                 <h3>Saljite nam fotografije sa vasih putovanja</h3>
                             </div>
                             <div class="mdl-color-text--grey-600 mdl-card__supporting-text">
-                                Uskoro u sklopu portala Bookly nova sekcija. Ovoga puta okrecemo se fotografiji kako bismo upotpunili dozivljaj svim
-                                posetiocima sajta. Fotografije ce biti objavljene kao deo galerije gde ce se glasanjem birati najbolja, a mi smo spremili nagrade
+                                Uskoro u sklopu portala Bookly nova sekcija. Ovoga puta okrecemo se fotografiji kako
+                                bismo upotpunili dozivljaj svim
+                                posetiocima sajta. Fotografije ce biti objavljene kao deo galerije gde ce se glasanjem
+                                birati najbolja, a mi smo spremili nagrade
                                 za najbolje.
                             </div>
                             <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
@@ -186,7 +176,6 @@ $stats -> incrementTotalViews(basename($_SERVER["SCRIPT_FILENAME"]));
                                 </div>
                             </div>
                         </div>
-
 
                         <?php
                         $result = $review->getLatest();
@@ -212,7 +201,6 @@ $stats -> incrementTotalViews(basename($_SERVER["SCRIPT_FILENAME"]));
                                 <div class="mdl-card__supporting-text mdl-color-text--grey-600">
 
                                     <script>
-
                                         $(function () {
 
                                             $("#latest-rating").rateYo({
@@ -221,10 +209,8 @@ $stats -> incrementTotalViews(basename($_SERVER["SCRIPT_FILENAME"]));
                                                 readOnly: true
                                             })
                                         });
-
                                     </script>
                                     <div id="latest-rating"></div>
-
                                     <h3 style="position: absolute; right: 10px;bottom: 70px;">
                                         Rating: <?php echo $latest->reviewStars; ?></h3>
                                 </div>
@@ -236,16 +222,18 @@ $stats -> incrementTotalViews(basename($_SERVER["SCRIPT_FILENAME"]));
                                     </div>
                                 </div>
                             </div>
-
                             <?php
                         }
                         ?>
                         <div class="mdl-card shopping mdl-cell mdl-cell--12-col">
                             <div class="mdl-card__media mdl-color-text--grey-50">
-                                <h3><a href="https://www.laguna.rs/laguna-bukmarker-akcija-10-knjiga-za-999-dinara-samo-na-sajtu-wwwdelfirs-unos-7658.html">Nova akcija u Laguna knjizarama</a></h3>
+                                <h3>
+                                    <a href="https://www.laguna.rs/laguna-bukmarker-akcija-10-knjiga-za-999-dinara-samo-na-sajtu-wwwdelfirs-unos-7658.html">Nova
+                                        akcija u Laguna knjizarama</a></h3>
                             </div>
                             <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-                            Ovog meseca Laganu knjizare spremile su za vas specijalan popust, pogledajte vise na ovom linku.
+                                Ovog meseca Laganu knjizare spremile su za vas specijalan popust, pogledajte vise na
+                                ovom linku.
                             </div>
                             <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
                                 <div class="minilogo"></div>
@@ -256,27 +244,15 @@ $stats -> incrementTotalViews(basename($_SERVER["SCRIPT_FILENAME"]));
                             </div>
                         </div>
 
-
-<!--                        <nav class="demo-nav mdl-cell mdl-cell--12-col">-->
-<!--                            <div class="section-spacer"></div>-->
-<!--                            <a href="entry.html" class="demo-nav__button" title="show more">-->
-<!--                                More-->
-<!--                                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">-->
-<!--                                    <i class="material-icons" role="presentation">arrow_forward</i>-->
-<!--                                </button>-->
-<!--                            </a>-->
-<!--                        </nav>-->
                     </div>
 
                 </main>
                 <div class="mdl-layout__obfuscator"></div>
             </div>
             <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-
     </div>
 </div>
 </li>
-
 </ul>
 </div>
 </div>
@@ -309,5 +285,4 @@ require "imports/footer.php";
 <script type="text/javascript" src="js/jquery.rateyo.js"></script>
 
 </body>
-
 </html>

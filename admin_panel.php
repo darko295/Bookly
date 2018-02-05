@@ -1,7 +1,6 @@
 <html>
 <?php
 session_start();
-
 include "classes/user.php";
 $user = new user();
 $aktivni = $user->getNumberOfActiveUsers();
@@ -24,6 +23,7 @@ include "get_data.php";
 <head>
 
     <title>Bookly | Admin panel</title>
+
     <link rel="shortcut icon" href="https://d1r7943vfkqpts.cloudfront.net/ccad7baaa6aea631c4c825c1e3a11921.png"/>
 
 <!--    Data Tables-->

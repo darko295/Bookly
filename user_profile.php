@@ -1,7 +1,11 @@
-<!DOCTYPE html>
 <?php
 
 session_start();
+
+if(!isset($_SESSION['username'])){
+    header("Location: index.php");
+}
+
 include "classes/user.php";
 $user = new user();
 $result = $user -> get_user($_SESSION['username']);
@@ -9,9 +13,7 @@ $info = $result -> fetch_array();
 
 ?>
 
-
 <html>
-
 <head>
 
     <meta charset="utf-8">
@@ -23,14 +25,12 @@ $info = $result -> fetch_array();
 
     <link rel="shortcut icon" href="https://d1r7943vfkqpts.cloudfront.net/ccad7baaa6aea631c4c825c1e3a11921.png"/>
 
-
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style_userprof.css">
 
     <link href="css/mdb.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/jquery.rateyo.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-orange.min.css">
     <link rel="stylesheet"
@@ -84,14 +84,6 @@ $info = $result -> fetch_array();
                     <?php } ?>
             </ul>
             <?php
-            if (!isset($_SESSION['username'])) {
-                ?>
-               <script>
-                window.location.href = "index.php" ;
-               </script>
-
-                <?php
-            } else {
                 $current = $_SESSION['username'];
                 ?>
                 <ul class="nav navbar-nav navbar-right">
@@ -107,19 +99,13 @@ $info = $result -> fetch_array();
                         </div>
                     </li>
                 </ul>
-            <?php }
-            ?>
+
         </div>
     </div>
 </nav>
 
 <!--/.Navbar-->
 
-
-
-
-
-<!--Posts section-->
 
 <div class="view hm-black-light">
     <div class="full-bg-img">
@@ -129,19 +115,17 @@ $info = $result -> fetch_array();
                 <div class="profile_pic-wrap">
                     <img id="user-img" src="https://www.menon.no/wp-content/uploads/person-placeholder.jpg" alt="" />
                 </div>
+                <br>
+                <h3>Hello <strong><?php echo $info['username']; ?></strong> this is your profile page. </h3>
+                <h5>Here is your profile info:</h5>
                 <div class="info-wrap">
-                    <p class="user-username">Username: <?php echo $info['username']; ?> </p>
-                    <p class="user-mail">E-mail:  <?php echo $info['email']; ?></p>
+                    <p class="user-username"><i class="fa fa-user" aria-hidden="true"></i>  Username: <strong><?php echo $info['username']; ?></strong> </p>
+                    <p class="user-mail"><i class="fa fa-envelope" aria-hidden="true"></i> E-mail: <strong> <?php echo $info['email']; ?></strong></p>
                 </div>
-
             </div>
-
-
         </ul>
     </div>
 </div>
-<!--/ end of review section-->
-
 
 <!--Footer-->
 <?php
@@ -166,8 +150,6 @@ require "imports/footer.php";
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="js/main.js"></script> <!-- Gem jQuery -->
 <!--RateYo-->
-<script type="text/javascript" src="js/jquery.rateyo.js"></script>
 
 </body>
-
 </html>

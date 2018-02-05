@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 31, 2018 at 08:17 PM
+-- Generation Time: Feb 05, 2018 at 08:38 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -85,7 +85,9 @@ INSERT INTO `book` (`bookID`, `bookTitle`, `authorID`) VALUES
 (18, 'Seobe', 17),
 (19, 'Na Drini cuprija', 5),
 (20, 'More', 18),
-(21, 'Godina smrti Rikarda Reisa', 19);
+(21, 'Godina smrti Rikarda Reisa', 19),
+(22, 'Ex ponto', 5),
+(23, 'Dervis i smrt', 1);
 
 -- --------------------------------------------------------
 
@@ -117,7 +119,12 @@ INSERT INTO `review` (`reviewID`, `userID`, `bookID`, `authorID`, `reviewContent
 (45, 1, 18, 17, 'Jako mi se dopada, jedan od boljih naslova koje sam procitao.', 4.5, '2017-12-24 13:39:56'),
 (46, 1, 14, 14, 'Fenomenalna, zaista ume da vas natera da odlutate i zaboravite na vreme.', 4.5, '2018-01-21 23:05:04'),
 (47, 24, 19, 5, 'Onakva kako se samo moze ocekivati od velikana srpske knjizevnosti kao sto je Ivo Andric. Svaka preporuka.', 5, '2018-01-21 23:19:48'),
-(48, 27, 21, 19, 'Odlicna!', 5, '2018-01-29 20:42:17');
+(48, 27, 21, 19, 'Odlicna!', 5, '2018-01-29 20:42:17'),
+(49, 28, 22, 5, 'Sjajna zbirka, preporucujem svakome', 4, '2018-02-05 15:21:29'),
+(50, 28, 22, 5, 'Sjajna zbirka, preporucujem svakome', 4, '2018-02-05 15:23:09'),
+(51, 28, 23, 1, 'Neverovatno zanimljiva knjiga, veliku gresku sam napravio kada sam izbegao da je procitam u srednjoj skoli.', 4.5, '2018-02-05 15:26:00'),
+(52, 28, 8, 11, 'Nisam odusevljen', 1.5, '2018-02-05 15:26:09'),
+(53, 28, 11, 1, 'Ako mene pitate, nema bolje!', 5, '2018-02-05 15:29:17');
 
 -- --------------------------------------------------------
 
@@ -139,17 +146,24 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userID`, `username`, `password`, `email`, `active`, `isAdmin`) VALUES
-(1, 'darko', 'darko', 'darko', '1', 1),
+(1, 'darko', 'darko', 'darko', '0', 1),
 (10, 'darko1', 'darko1', 'darko1', '1', 0),
 (15, 'nikola', 'nikola2232', 'nikola@gmail.com', '0', 0),
 (16, 'test', 'password', 'test@darko.rs', '0', 0),
 (21, 'petar153', 'petar153', 'petar153@gmail.com', '0', 0),
 (22, 'jovan', 'jovan', 'jovan@gmail.com', '0', 0),
-(23, 'darko295', 'darkob1995', 'darkob@gmail.com', '0', 0),
+(23, 'darko295', 'darkob1995', 'darkob295@gmail.com', '0', 0),
 (24, 'filip123', 'filip123', 'filip123@gmail.com', '0', 0),
 (25, 'pera', 'pera1', 'pera@gmail.com', '1', 0),
 (26, 'andrijana', 'andrijana', 'andrijana@gmail.com', '0', 0),
-(27, 'zika', 'zika123', 'zika@gmail.com', '0', 0);
+(27, 'zika', 'zika123', 'zika@gmail.com', '0', 0),
+(28, 'filip', 'filip123', 'filip1@gmail.com', '0', 0),
+(29, 'mika', 'mikamika', 'mika123@yahoo.com', '0', 0),
+(30, 'darko1995', 'darkob123', 'darko1995@gmail.com', '0', 0),
+(32, 'petar', 'pera123pera', 'perapetar@outlook.com', '0', 0),
+(33, 'nemanja_fil', 'nemanja!@#$%', 'nemanja@gmail.com', '0', 0),
+(34, 'darko2', 'darko222', 'darko2@gmail.com', '0', 0),
+(35, 'darko9090', 'darko0909', 'darko9090@gmail.com', '0', 0);
 
 --
 -- Indexes for dumped tables
@@ -197,19 +211,19 @@ ALTER TABLE `author`
 -- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
-  MODIFY `bookID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `bookID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `reviewID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `reviewID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- Constraints for dumped tables

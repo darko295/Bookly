@@ -1,35 +1,29 @@
-
-
+//show stars
 $(function () {
 
     $(".rateYo").rateYo({rating: 0, ratedFill: "#000", halfStar: true})
         .on("rateyo.set", function (e, data) {
             document.getElementById("stars-rating").value = data.rating;
         });
-
-
 });
 
 
-
-
-    $(document).ready(function () {
-        $(".remove-row").click(function () {
-            var value = ($(this).attr("id")).substring(7);
-            var table_row = $(this);
-            $.get("delete_review.php", {reviewID: value},
-                function (data) {
-                    if (data == 1) {
-                        $.notify("Review deleted", "success");
-                        $(table_row).parent().parent().parent().remove();
-                    }
-                });
-        });
+//Remove review on "x" click
+$(document).ready(function () {
+    $(".remove-row").click(function () {
+        var value = ($(this).attr("id")).substring(7);
+        var table_row = $(this);
+        $.get("delete_review.php", {reviewID: value},
+            function (data) {
+                if (data == 1) {
+                    $.notify("Review deleted", "success");
+                    $(table_row).parent().parent().parent().remove();
+                }
+            });
     });
+});
 
-
-
-
+//Add item on wishlist
 $(document).ready(function () {
     $(".wishlist-add").click(function () {
         var info = ($(this).attr("id")).split('-');
@@ -57,12 +51,7 @@ $(document).ready(function () {
     });
 });
 
-
-
-
-
-
-
+// Refresh wishlist when item is deleted
 function refresh() {
     var action = "nesto";
     $.ajax({
@@ -80,71 +69,59 @@ function refresh() {
             }
         }
     });
-
 }
 
+//Delete wishlist item on button click
+function obrisi(record_id) {
+    $.ajax({
+        type: "POST",
+        url: "ws_delete.php",
+        data: {
+            record_id: record_id
+        },
+        success: function (result) {
+            if (result === "0") {
+                alert("Greska");
+            } else {
+                var row = "#delete-item-" + record_id;
+                $.notify("Deleting successful", "success");
+                $(row).parent().parent().remove();
+                refresh();
+            }
+        }
+    });
+}
 
-
-    function obrisi(record_id) {
+//Show wishlist items
+$(document).ready(function () {
+    $("#show-wishlist").click(function () {
+        var action = "nesto";
         $.ajax({
             type: "POST",
-            url: "ws_delete.php",
+            url: "wishlist_ajax.php",
             data: {
-                record_id: record_id
+                action: action
             },
-            success: function (result) {
-                if (result === "0") {
-                    alert("Greska");
+            success: function (data) {
+                if (data !== "0") {
+                    $("#table-div").show();
+                    $("#table-div").html(data);
                 } else {
-                    var row = "#delete-item-" + record_id;
-                    $.notify("Deleting successful", "success");
-                    $(row).parent().parent().remove();
-                    refresh();
+                    $.notify("Error occurred", "warn");
                 }
             }
         });
-
-    }
-
-
-
-
-
-    $(document).ready(function () {
-        $("#show-wishlist").click(function () {
-            var action = "nesto";
-            $.ajax({
-                type: "POST",
-                url: "wishlist_ajax.php",
-                data: {
-                    action: action
-                },
-                success: function (data) {
-                    if (data !== "0") {
-                        $("#table-div").show();
-                        $("#table-div").html(data);
-                    } else {
-                        $.notify("Error occurred", "warn");
-                    }
-                }
-            });
-        });
     });
+});
 
-
-
-
-
-
+//Get more info about author
 $(document).ready(function () {
     $(".more-info").click(function () {
         var info = ($(this).attr("id")).split('-');
-        //     var book_title = info[3];
         var author_surname = info[2];
         var author_name = info[1];
         var author = author_name + '_' + author_surname;
         var url = "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&redirects&page=" + author + "&callback=?";
-
 
         $.ajax({
             type: "GET",
@@ -182,7 +159,7 @@ $(document).ready(function () {
     });
 });
 
-
+// Reset more info about author modal
 function reset() {
     $('.data').empty();
     var initial = $('.data-not-found').html();
@@ -190,9 +167,7 @@ function reset() {
     $('.get-pdf-class').hide();
 }
 
-
-
-
+//Generate and download pdf for selected author
 function get_pdf(element) {
     var author = $(element).attr('value');
     var url = "https://en.wikipedia.org/api/rest_v1/page/pdf/" + author;
@@ -215,8 +190,7 @@ function get_pdf(element) {
     });
 }
 
-
-
+//Get list of more books for author
 $(document).ready(function () {
     $(".more-by-this-author").click(function () {
         var info = ($(this).attr("id")).split('-');
@@ -243,8 +217,7 @@ $(document).ready(function () {
     });
 });
 
-
-
+//Open additional book info in new tab on button click
 function view_more(item) {
 
     var id = $(item).attr('id');
@@ -262,7 +235,4 @@ function view_more(item) {
         }
     }
     window.open(url);
-
-
 }
-
