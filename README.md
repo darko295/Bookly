@@ -17,16 +17,15 @@
 
 ***WS podrzava sledece funkcije:***
 
-GET:
-ws/authors.json
+JSON:
+1. ws/authors.json 
+2. ws/authors/@id.json
+3. ws/wishlist/@userid.json
+4. ws/wishlist (POST)
+5. ws/wishlist/delete/@id (DELETE)
+6. ws/review/update/@id (PUT)
 
-ws/authors/@id.json
-
-ws/wishlist.json
-
-ws/wishlist/@userid.json
-
-ws/authors.xml
-
-POST:
-ws/wishlist
+XML:
+1. ws/authors.xml
+2. ws/authors/@id.xml
+3. ws/wishlist/@userid.xml
