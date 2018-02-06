@@ -13,9 +13,10 @@ $(document).ready(function () {
     $(".remove-row").click(function () {
         var value = ($(this).attr("id")).substring(7);
         var table_row = $(this);
-        $.get("delete_review.php", {reviewID: value},
+        var action = "delete_review";
+        $.get("controllers/controller.php", {reviewID: value, action:action},
             function (data) {
-                if (data == 1) {
+                if (data === "1") {
                     $.notify("Review deleted", "success");
                     $(table_row).parent().parent().parent().remove();
                 }
@@ -27,13 +28,13 @@ $(document).ready(function () {
 $(document).ready(function () {
     $(".wishlist-add").click(function () {
         var info = ($(this).attr("id")).split('-');
-        var action = info[0];
+        var action = "wishlist";
         var book_id = info[3];
         var author_id = info[2];
         var user_id = info[1];
         $.ajax({
             type: "POST",
-            url: "ws_calls.php",
+            url: "controllers/controller.php",
             data: {
                 author_id: author_id,
                 user_id: user_id,
@@ -44,7 +45,7 @@ $(document).ready(function () {
                 if (data === "1") {
                     $.notify("Item added", "success");
                 } else {
-                    alert(data);
+                    $.notify("Error occurred", "warn");
                 }
             }
         });
@@ -53,10 +54,10 @@ $(document).ready(function () {
 
 // Refresh wishlist when item is deleted
 function refresh() {
-    var action = "nesto";
+    var action = "show_wishlist";
     $.ajax({
         type: "POST",
-        url: "wishlist_ajax.php",
+        url: "controllers/ws_controller.php",
         data: {
             action: action
         },
@@ -73,11 +74,13 @@ function refresh() {
 
 //Delete wishlist item on button click
 function obrisi(record_id) {
+    var action = "ws_delete";
     $.ajax({
         type: "POST",
-        url: "ws_delete.php",
+        url: "controllers/ws_controller.php",
         data: {
-            record_id: record_id
+            record_id: record_id,
+            action : action
         },
         success: function (result) {
             if (result === "0") {
@@ -95,10 +98,10 @@ function obrisi(record_id) {
 //Show wishlist items
 $(document).ready(function () {
     $("#show-wishlist").click(function () {
-        var action = "nesto";
+        var action = "show_wishlist";
         $.ajax({
             type: "POST",
-            url: "wishlist_ajax.php",
+            url: "controllers/ws_controller.php",
             data: {
                 action: action
             },
@@ -199,7 +202,7 @@ $(document).ready(function () {
         var author_surname = info[2];
         $.ajax({
             type: "GET",
-            url: "more_books.php",
+            url: "controllers/ws_controller.php",
             data: {
                 author_name: author_name,
                 author_surname: author_surname,

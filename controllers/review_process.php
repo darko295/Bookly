@@ -1,9 +1,9 @@
 <?php
 session_start();
-include "classes/user.php";
+include "../classes/user.php";
 $user = new user();
 if (!isset($_SESSION['username'])) {
-    header('index.php');
+    header('../index.php');
 }
 
 if (isset($_GET["review_button"])) {
@@ -19,9 +19,9 @@ if (isset($_GET["review_button"])) {
         $review_stars = $_GET["stars_rating"];
         $username = $_SESSION['username'];
 
-        include "classes/author.php";
-        include "classes/book.php";
-        include "classes/review.php";
+        include "../classes/author.php";
+        include "../classes/book.php";
+        include "../classes/review.php";
 
         $author = new author();
         $new_author_id = $author->addAuthorIfDoesntExist($name, $surname);
@@ -33,7 +33,7 @@ if (isset($_GET["review_button"])) {
         if ($review->addReview($new_book_id, $new_author_id, $review_text, $review_stars, $username)) {
             ?>
             <script>
-                window.location.href = "bookly.php";
+                window.location.href = "../bookly.php";
                 alert("Uspesno ubacen utisak!");
             </script>
             <?php

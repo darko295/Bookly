@@ -73,7 +73,7 @@
 
 
         <div id="cd-signup"> <!-- sign up form -->
-            <form class="cd-form" id="create_form" method="post" action="signup.php">
+            <form class="cd-form" id="create_form" method="post" action="controllers/signup.php">
                 <p class="fieldset">
                     <label class="image-replace cd-username" for="signup-username">Username</label>
                     <input class="full-width has-padding has-border" name="create_username" id="signup-username"

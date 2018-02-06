@@ -9,7 +9,7 @@ $(document).ready(function () {
             {"title": "Review stars"},
             {"title": "Review time"}
         ],
-        "ajax": "http://localhost/domaci_1/DataTables-1.10.4/datatables_obrada_reviews.php",
+        "ajax": "datatables_obrada_reviews.php",
         "processing": true,
         "serverSide": true
     });
@@ -46,7 +46,7 @@ $(document).ready(function () {
             {"title": "Is member?"},
             {"title": "User ID"}
         ],
-        "ajax": "http://localhost/domaci_1/DataTables-1.10.4/datatables_obrada_questions.php",
+        "ajax": "datatables_obrada_questions.php",
         "processing": true,
         "serverSide": true
     });

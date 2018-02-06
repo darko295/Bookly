@@ -1,6 +1,5 @@
 <html>
 <head>
-
     <style>
         #question_email, #question_text {
             background-color: lightgray;
@@ -41,57 +40,7 @@
         }
     </style>
 
-    <script>
-
-
-    </script>
-
-    <script type="text/javascript">
-        function sendQuestion() {
-            var email = $('#question_email').val();
-            var question = $('#question_text').val();
-            var form = document.getElementById("question_form");
-            var inpObj = document.getElementById("question_email");
-            var inpObj1 = document.getElementById("question_text");
-            var valid = true;
-
-            if (!inpObj.checkValidity()) {
-                document.getElementById("error-msg").innerHTML = inpObj.validationMessage;
-                inpObj.style.border = "2px solid red";
-                valid = false;
-            }
-
-            if (!inpObj1.checkValidity()) {
-                document.getElementById("error-msg1").innerHTML = inpObj1.validationMessage;
-                inpObj1.style.border = "2px solid red";
-
-                valid = false;
-            }
-
-            if(valid){
-
-            $.ajax({
-                type: "POST",
-                url: "question_process.php",
-                data: {
-                    email: email,
-                    question: question
-                },
-                success: function (result) {
-                    if (result === "1") {
-                        form.reset();
-                        $.notify("Question sent", "success");
-
-                    } else {
-                        $.notify(result, "warn");
-                    }
-                }
-            });
-            }
-
-        }
-
-    </script>
+    <script src="../js/footer.js"></script>
 
 </head>
 <body>
@@ -148,24 +97,16 @@
                 </form>
             </div>
             <div class="col-md-1"></div>
-
-
         </div>
     </div>
-
     <hr>
-
-
     <!--Copyright-->
     <div class="footer-copyright">
         <div class="container-fluid">© 2017 Made by Bookly Team, Design used: <a href="https://www.MDBootstrap.com">
                 MDBootstrap.com </a>
-
         </div>
     </div>
     <!--/.Copyright-->
-
 </footer>
-
 </body>
 </html>

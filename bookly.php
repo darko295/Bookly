@@ -54,6 +54,8 @@ if (!isset($_SESSION['bookly'])) {
 
 
     <script type="text/javascript" src="js/bookly.js"></script>
+    <script src="js/footer.js"></script>
+
 
 
     <style>
@@ -130,7 +132,7 @@ if (isset($_SESSION['username'])) {
                             <a class="dropdown-item open" id="show-wishlist" href="#" data-toggle="modal"
                                data-target="#myModal"><span
                                         class="glyphicon glyphicon-user"></span>&nbsp;My wishlist</a>
-                            <a class="dropdown-item" href="logout.php"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign
+                            <a class="dropdown-item" href="controllers/logout.php" ><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign
                                 Out</a>
                         </div>
                     </li>
@@ -179,7 +181,7 @@ require "imports/modals.php";
 
                                 <div class="container">
 
-                                    <form id="add-review" method="get" action="review_process.php">
+                                    <form id="add-review" method="get" action="controllers/review_process.php">
                                         <div class="form-group" style="width: 43%;">
                                             <label for="title"></label>
                                             <input class="form-control-mine back-col" id="title" type="text"

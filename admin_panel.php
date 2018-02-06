@@ -16,8 +16,9 @@ if (!isset($_SESSION['admin'])) {
 }
 
 $data = $stats->getDailyStatsForBookly();
+$stats -> napravi_json_daily();
+$stats -> napravi_json_total();
 
-include "get_data.php";
 
 ?>
 <head>

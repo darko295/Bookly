@@ -49,6 +49,7 @@ if (!isset($_SESSION['index'])) {
     <script src="js/modernizr.js"></script>
     <script src="js/jquery-3.1.1.js"></script>
     <script type="text/javascript" src="js/login_signup_form.js"></script>
+    <script src="js/footer.js"></script>
 
 
 </head>
@@ -114,7 +115,7 @@ if (!isset($_SESSION['index'])) {
                             <a class="dropdown-item" href="user_profile.php"><span
                                         class="glyphicon glyphicon-user"></span>&nbsp;View
                                 Profile</a>
-                            <a class="dropdown-item" href="logout.php"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign
+                            <a class="dropdown-item" href="controllers/logout.php"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign
                                 Out</a>
                         </div>
                     </li>

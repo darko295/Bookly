@@ -56,7 +56,7 @@ class review
     public function delete_review($review_id)
     {
         global $mysqli;
-        $sql = "DELETE FROM review WHERE reviewID ='" . $review_id . "'";
+        $sql = "DELETE FROM review WHERE reviewID =". $review_id;
 
         if ($q = $mysqli->query($sql)) {
             echo "1";

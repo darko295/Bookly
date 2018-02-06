@@ -2,6 +2,7 @@
 $(document).ready(function () {
     $("#signup-username").blur(function () {
         var vrednost = $("#signup-username").val();
+        var action = "signup_validation";
         if (vrednost.length < 3) {
             $("#info").html("Username too short!");
             $("#signup-username").focus();
@@ -12,7 +13,7 @@ $(document).ready(function () {
             $("#info").html("Username can't be a number.");
             $("#signup-username").focus();
         } else {
-            $.get("signup_validation.php", {create_username: vrednost},
+            $.get("controllers/controller.php", {create_username: vrednost, action : action},
                 function (data) {
                     if (data === "0") {
                         $("#info").html("Username not available");
@@ -24,6 +25,7 @@ $(document).ready(function () {
         }
     });
 });
+
 //validacija prilikom logovanja
 function valid_login() {
     var login_username = $('#signin-username').val();
@@ -31,17 +33,17 @@ function valid_login() {
 
     if (login_username.length < 3 || login_password.length < 5) {
         $("#failed-login").html("Username or password is/are too short!");
-        return;
     } else {
         $.ajax({
             type: "POST",
-            url: "login_validation.php",
+            url: "controllers/controller.php",
             data: {
                 username: login_username,
-                password: login_password
+                password: login_password,
+                action : "login_validation"
             },
             success: function (result) {
-                if (result) {
+                if (result === "1") {
                     $("#failed-login").html("Redirecting to reviews page...");
                     $("#loader").show();
                     setTimeout(' window.location.href = "bookly.php"; ', 3000);
@@ -53,15 +55,17 @@ function valid_login() {
         });
     }
 }
+
 //resetovanje password-a
 function password_reset() {
     var email_reset = $('#reset-email').val();
-
+    var action = "send_mail";
     $.ajax({
         type: "POST",
-        url: "password_reset.php",
+        url: "controllers/controller.php",
         data: {
-            email: email_reset
+            email: email_reset,
+            action:action
         },
         beforeSend: function () {
             $("#loader-password-reset").show();
@@ -79,6 +83,7 @@ function password_reset() {
         }
     });
 }
+
 //prikazi formu kad se klikne na 'registruj se' post
 function show_form() {
     $("#registration").click();

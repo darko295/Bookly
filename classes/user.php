@@ -53,7 +53,7 @@ class user
 
     public function password_verify($entered, $fromdb)
     {
-        if ($entered != $fromdb) return false;
+        if(password_verify($entered, $fromdb)) return false;
 
         return true;
     }
@@ -61,12 +61,12 @@ class user
     public function setToActive($username)
     {
         global $mysqli;
-        $sql = "UPDATE user SET active = '1' WHERE username = '" . $username . "'";
-        if ($mysqli->query($sql)) {
+        $sql = "UPDATE user SET active = '1'  WHERE username = '" . $username . "'";
+        if($mysqli->query($sql)){
             if ($mysqli->affected_rows == 1) {
                 return true;
+                }
             }
-        }
         return false;
     }
 
@@ -88,7 +88,7 @@ class user
         if (strlen($password) < 5) return false;
         $row = $this->get_user($username);
         $red = $row->fetch_array();
-        if (!$this->password_verify($password, $red['password'])) return false;
+        if (!$this->password_verify($password, $red['passwordHashed'])) return false;
         if (!$this->setToActive($username)) return false;
         return true;
     }
@@ -96,14 +96,15 @@ class user
     public function create_account($username, $password, $mail, $active)
     {
         global $mysqli;
-        $stmt = $mysqli->prepare("INSERT INTO user (username,password,email,active) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("sssi", $username, $password, $mail, $active);
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $mysqli->prepare("INSERT INTO user (username,password,passwordHash,email,active) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssi", $username, $password,$hashed_password, $mail, $active);
 
         if ($stmt->execute()) {
-            echo '<script>window.location.href = "index.php";
+            echo '<script>window.location.href = "../index.php";
                alert("Uspesna registracija, molimo ulogujte se!");</script>';
         } else {
-            echo '<script>window.location.href = "#0";</script>';
+            echo '<script>window.location.href = "#";</script>';
         }
     }
 
@@ -127,12 +128,9 @@ class user
 
                 return true;
             } else {
-
                 return false;
-
             }
         } else {
-
             echo "Greska prilikom konektovanja sa bazom";
         }
         $mysqli->close();
@@ -175,7 +173,7 @@ class user
 
         $this->setToInactive($username);
         session_destroy();
-        header("Location: index.php");
+        header("Location: ../index.php");
 
     }
 
@@ -185,8 +183,8 @@ class user
         $is_answered = 0;
         $is_member = 0;
         $user_id = null;
-        if($username != null){
-        $result = $this->get_user($username);
+        if ($username != null) {
+            $result = $this->get_user($username);
             $user_array = $result->fetch_array();
             $user_id = $user_array['userID'];
             $is_member = 1;

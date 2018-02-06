@@ -43,7 +43,7 @@ $info = $result -> fetch_array();
     <script src="js/modernizr.js"></script>
     <script src="js/jquery-3.1.1.js"></script>
     <script src="js/prefixfree.min.js"></script>
-
+    <script src="js/footer.js"></script>
 
 </head>
 
@@ -94,7 +94,7 @@ $info = $result -> fetch_array();
                         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="#"><span class="glyphicon glyphicon-user"></span>&nbsp;View
                                 Profile</a>
-                            <a class="dropdown-item" href="logout.php"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign
+                            <a class="dropdown-item" href="controllers/logout.php"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign
                                 Out</a>
                         </div>
                     </li>

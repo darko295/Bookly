@@ -11,8 +11,8 @@ if (isset($_POST['create_submit'])) {
         $password = trim($password);
         $mail = trim($mail);
 
-        include "connection.php";
-        include "classes/user.php";
+        include "../connection.php";
+        include "../classes/user.php";
         $user = new user();
         $user -> create_account($username,$password,$mail,0);
 
