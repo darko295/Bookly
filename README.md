@@ -24,6 +24,7 @@ JSON:
 4. ws/wishlist (POST)
 5. ws/wishlist/delete/@id (DELETE)
 6. ws/review/update/@id (PUT)
+
 XML:
 1. ws/authors.xml
 2. ws/authors/@id.xml
