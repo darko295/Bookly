@@ -62,7 +62,7 @@ function refresh() {
             action: action
         },
         success: function (data) {
-            if (data !== "1") {
+            if (data !== "0") {
                 $("#table-div").show();
                 $("#table-div").html(data);
             } else {

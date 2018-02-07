@@ -28,12 +28,10 @@ $stats -> napravi_json_total();
     <link rel="shortcut icon" href="https://d1r7943vfkqpts.cloudfront.net/ccad7baaa6aea631c4c825c1e3a11921.png"/>
 
 <!--    Data Tables-->
-    <script src="DataTables-1.10.4/media/js/jquery.js"></script>
-    <link rel="stylesheet" type="text/css" href="DataTables-1.10.4/media/css/jquery.dataTables.css"/>
-    <script src="DataTables-1.10.4/media/js/jquery.dataTables.min.js"></script>
+    <script src="data_tables/DataTables-1.10.4/media/js/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="data_tables/DataTables-1.10.4/media/css/jquery.dataTables.css"/>
+    <script src="data_tables/DataTables-1.10.4/media/js/jquery.dataTables.min.js"></script>
     <link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
-    <script type="text/javascript" src="js/data_tables.js"></script>
-    <script src="js/jquery-2.1.1.min.js"></script>
 
 <!--    Bootstrap-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css">
@@ -109,6 +107,7 @@ $stats -> napravi_json_total();
 
 
 <script rel="script" src="js/graphs.js"></script>
+<script type="text/javascript" src="js/data_tables.js"></script>
 
 
 </body>

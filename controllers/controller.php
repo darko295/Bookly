@@ -1,8 +1,9 @@
 <?php
+session_start();
+
 include "../classes/wishlist.php";
 include "../classes/user.php";
 include "../classes/review.php";
-session_start();
 
 $wishlist = new wishlist();
 $user = new user();
@@ -36,8 +37,9 @@ if(isset($_SESSION['username'])){
                 $_SESSION['loggedin'] = true;
                 echo "1";
             }
-        }
+        }else{
         echo "0";
+        }
     }
 
     function delete_review(){

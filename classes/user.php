@@ -1,5 +1,5 @@
 <?php
-include(dirname(__FILE__) . "/../connection.php");
+include(dirname(__FILE__) . "/../public/connection.php");
 
 class user
 {
@@ -53,7 +53,7 @@ class user
 
     public function password_verify($entered, $fromdb)
     {
-        if(password_verify($entered, $fromdb)) return false;
+        if(!password_verify($entered, $fromdb)) return false;
 
         return true;
     }
@@ -88,7 +88,7 @@ class user
         if (strlen($password) < 5) return false;
         $row = $this->get_user($username);
         $red = $row->fetch_array();
-        if (!$this->password_verify($password, $red['passwordHashed'])) return false;
+        if (!$this->password_verify($password, $red['passwordHash'])) return false;
         if (!$this->setToActive($username)) return false;
         return true;
     }

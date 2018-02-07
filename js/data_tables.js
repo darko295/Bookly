@@ -9,7 +9,9 @@ $(document).ready(function () {
             {"title": "Review stars"},
             {"title": "Review time"}
         ],
-        "ajax": "datatables_obrada_reviews.php",
+        "ajax": {
+            "url" :"data_tables/datatables_obrada_reviews.php"
+        },
         "processing": true,
         "serverSide": true
     });
@@ -46,7 +48,9 @@ $(document).ready(function () {
             {"title": "Is member?"},
             {"title": "User ID"}
         ],
-        "ajax": "datatables_obrada_questions.php",
+        "ajax": {
+            "url" :"data_tables/datatables_obrada_questions.php"
+        },
         "processing": true,
         "serverSide": true
     });

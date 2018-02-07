@@ -1,5 +1,5 @@
 <?php
-include(dirname(__FILE__) . "/../connection.php");
+include(dirname(__FILE__) . "/../public/connection.php");
 
 class wishlist
 {

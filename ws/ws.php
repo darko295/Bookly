@@ -1,7 +1,7 @@
 <?php
 require 'flight/Flight.php';
 require 'indent.php';
-include "../connection.php";
+include "../public/connection.php";
 $json_podaci = file_get_contents("php://input");
 $xml_podaci = file_get_contents("php://input");
 Flight::set('json_podaci', $json_podaci);
@@ -28,7 +28,6 @@ Flight::route('GET /authors.json', function () {
         $niz[$i]["authorID"] = $red->authorID;
         $niz[$i]["name"] = $red->name;
         $niz[$i]["surnname"] = $red->surname;
-
         $i++;
     }
     $json_niz = json_encode($niz, JSON_UNESCAPED_UNICODE);
@@ -45,7 +44,6 @@ Flight::route('GET /authors/@id.json', function ($id) {
     $result = $mysqli->query($query);
 
     $niz = array();
-
     $red = $result->fetch_object();
 
     $niz["authorID"] = $red->authorID;
