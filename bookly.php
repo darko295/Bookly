@@ -272,7 +272,7 @@ require "imports/modals.php";
                                                          style="position: relative">
 
                                                         <?php
-                                                        if ($row->username == $current) {
+                                                        if ($row->username == $current || $user->is_admin($current)) {
                                                             ?>
                                                             <a class="remove-row"
                                                                id="remove_<?php echo $row->reviewID; ?>"

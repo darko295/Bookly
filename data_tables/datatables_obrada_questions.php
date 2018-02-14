@@ -1,5 +1,5 @@
 <?php
-include "../connection.php";
+include "../public/connection.php";
 
 
 $table = "question";
@@ -22,8 +22,6 @@ $columns = array(
     array( 'db' => 'userID',     'dt' => 6 ),
 
 );
-
-
 
 
 

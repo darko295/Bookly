@@ -17,8 +17,8 @@
       <file leaf-file-name="user.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/user.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="12" column="31" lean-forward="true" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+            <state relative-caret-position="458">
+              <caret line="131" column="13" lean-forward="true" selection-start-line="131" selection-start-column="13" selection-end-line="131" selection-end-column="13" />
               <folding>
                 <marker date="1518033944553" expanded="true" signature="176:211" ph="SELECT * FRO... user" />
                 <marker date="1518033944553" expanded="true" signature="176:213" ph="SELECT * FRO... user" />
@@ -39,10 +39,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="bookly.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bookly.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="351">
+              <caret line="276" column="81" lean-forward="true" selection-start-line="276" selection-start-column="81" selection-end-line="276" selection-end-column="81" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ws_controller.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/ws_controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
+            <state relative-caret-position="42">
               <caret line="117" column="72" lean-forward="false" selection-start-line="117" selection-start-column="12" selection-end-line="117" selection-end-column="72" />
               <folding>
                 <marker date="1518034632246" expanded="true" signature="1558:1575" ph="..." />
@@ -62,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ws.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ws.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ws/ws.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="45" column="19" lean-forward="false" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
+            <state relative-caret-position="420">
+              <caret line="20" column="37" lean-forward="true" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
               <folding>
                 <marker date="1518034951801" expanded="true" signature="512:532" ph="SELECT * FRO... author" />
                 <marker date="1518034951801" expanded="true" signature="1099:1137" ph="SELECT * FRO... author" />
@@ -82,10 +92,56 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="datatables_obrada_questions.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data_tables/datatables_obrada_questions.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="21">
+              <caret line="1" column="29" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="review.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/classes/review.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="409">
+              <caret line="55" column="26" lean-forward="false" selection-start-line="55" selection-start-column="20" selection-end-line="55" selection-end-column="26" />
+              <folding>
+                <marker date="1518034009444" expanded="true" signature="157:210" ph="SELECT * FRO... user" />
+                <marker date="1518034009444" expanded="true" signature="573:684" ph="INSERT INTO review... " />
+                <marker date="1518034009444" expanded="true" signature="967:1241" ph="SELECT u.use... author" />
+                <marker date="1518034009444" expanded="true" signature="1439:1788" ph="SELECT u.use... author" />
+                <marker date="1518034009444" expanded="true" signature="1999:2034" ph="DELETE FROM " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="data_tables.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/data_tables.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="12" column="38" lean-forward="false" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="datatables_obrada_reviews.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data_tables/datatables_obrada_reviews.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="525">
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="bookly.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/bookly.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
+            <state relative-caret-position="21">
               <caret line="64" column="27" lean-forward="false" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
               <folding />
             </state>
@@ -102,46 +158,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="logout.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/logout.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="2" column="24" lean-forward="true" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="review_process.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/review_process.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="2" column="3" lean-forward="false" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="signup.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/signup.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user_profile.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user_profile.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -153,7 +169,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ws_ca</find>
       <find>wishlist-add</find>
       <find>alert</find>
       <find>delete</find>
@@ -183,6 +198,7 @@
       <find>conn</find>
       <find>conne</find>
       <find>show_wishlist</find>
+      <find>isAd</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -206,8 +222,6 @@
         <option value="$PROJECT_DIR$/DataTables-1.10.4/datatables_obrada.php" />
         <option value="$PROJECT_DIR$/DataTables-1.10.4/datatables_obrada_reviews.php" />
         <option value="$PROJECT_DIR$/DataTables-1.10.4/datatables_obrada_questions.php" />
-        <option value="$PROJECT_DIR$/data_tables/datatables_obrada_reviews.php" />
-        <option value="$PROJECT_DIR$/data_tables/datatables_obrada_questions.php" />
         <option value="$PROJECT_DIR$/tables/datatables_obrada_reviews.php" />
         <option value="$PROJECT_DIR$/tables/datatables_obrada_questions.php" />
         <option value="$PROJECT_DIR$/imports/stats_block.php" />
@@ -224,7 +238,6 @@
         <option value="$PROJECT_DIR$/controllers/logout.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/controllers/review_process.php" />
-        <option value="$PROJECT_DIR$/bookly.php" />
         <option value="$PROJECT_DIR$/get_data.php" />
         <option value="$PROJECT_DIR$/hash.php" />
         <option value="$PROJECT_DIR$/user_profile.php" />
@@ -242,6 +255,9 @@
         <option value="$PROJECT_DIR$/js/bookly.js" />
         <option value="$PROJECT_DIR$/controllers/ws_controller.php" />
         <option value="$PROJECT_DIR$/ws/ws.php" />
+        <option value="$PROJECT_DIR$/data_tables/datatables_obrada_questions.php" />
+        <option value="$PROJECT_DIR$/data_tables/datatables_obrada_reviews.php" />
+        <option value="$PROJECT_DIR$/bookly.php" />
       </list>
     </option>
   </component>
@@ -272,7 +288,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -293,7 +308,7 @@
             <path>
               <item name="domaci_1" type="b2602c69:ProjectViewProjectNode" />
               <item name="domaci_1" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="data_tables" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="domaci_1" type="b2602c69:ProjectViewProjectNode" />
@@ -305,6 +320,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -347,11 +363,12 @@
       <workItem from="1517946424041" duration="12000" />
       <workItem from="1518029799296" duration="1624000" />
       <workItem from="1518033697176" duration="1248000" />
+      <workItem from="1518608505215" duration="703000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111165000" />
+    <option name="totallyTimeSpent" value="111868000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -393,8 +410,6 @@
     <entry file="file://$PROJECT_DIR$/DataTables-1.10.4/examples/server_side/scripts/ssp.class.php" />
     <entry file="file://$PROJECT_DIR$/DataTables-1.10.4/datatables_obrada_reviews.php" />
     <entry file="file://$PROJECT_DIR$/DataTables-1.10.4/datatables_obrada_questions.php" />
-    <entry file="file://$PROJECT_DIR$/data_tables/datatables_obrada_questions.php" />
-    <entry file="file://$PROJECT_DIR$/data_tables/datatables_obrada_reviews.php" />
     <entry file="file://$PROJECT_DIR$/tables/datatables_obrada_reviews.php" />
     <entry file="file://$PROJECT_DIR$/tables/datatables_obrada_questions.php" />
     <entry file="file://$PROJECT_DIR$/imports/stats_block.php">
@@ -441,29 +456,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="840">
           <caret line="40" column="25" lean-forward="false" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
-          <folding>
-            <marker date="1518030946920" expanded="true" signature="2907:4886" ph="..." />
-            <marker date="1518030946920" expanded="true" signature="2944:3275" ph="..." />
-            <marker date="1518030946920" expanded="true" signature="3158:3258" ph="..." />
-            <marker date="1518030946920" expanded="true" signature="3355:3887" ph="..." />
-            <marker date="1518030946920" expanded="true" signature="3568:3787" ph="..." />
-            <marker date="1518030946920" expanded="true" signature="3925:4411" ph="..." />
-            <marker date="1518030946920" expanded="true" signature="4139:4228" ph="..." />
-            <marker date="1518030946920" expanded="true" signature="4449:4656" ph="..." />
-            <marker date="1518030946920" expanded="true" signature="4694:4866" ph="..." />
-            <marker date="1518030946920" expanded="true" signature="4795:4845" ph="..." />
-            <marker date="1518030946920" expanded="true" signature="4966:6371" ph="..." />
-            <marker date="1518030946920" expanded="true" signature="5035:5139" ph="..." />
-            <marker date="1518030946920" expanded="true" signature="5258:6355" ph="..." />
-            <marker date="1518030946920" expanded="true" signature="5295:5579" ph="..." />
-            <marker date="1518030946920" expanded="true" signature="5501:5562" ph="..." />
-            <marker date="1518030946920" expanded="false" signature="5604:5643" ph="..." />
-            <marker date="1518030946920" expanded="true" signature="5644:5962" ph="..." />
-            <marker date="1518030946920" expanded="true" signature="5697:5891" ph="..." />
-            <marker date="1518030946920" expanded="false" signature="5848:5890" ph="..." />
-            <marker date="1518030946920" expanded="true" signature="6021:6244" ph="..." />
-            <marker date="1518030946920" expanded="true" signature="6146:6223" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -471,15 +463,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="945">
           <caret line="45" column="37" lean-forward="false" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/data_tables.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="38" lean-forward="false" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -487,7 +470,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-861">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -498,20 +480,6 @@
           <folding>
             <marker date="1518034009490" expanded="true" signature="190:268" ph="SELECT * FRO... author" />
             <marker date="1518034009490" expanded="true" signature="798:876" ph="INSERT INTO author... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/review.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <marker date="1518034009444" expanded="true" signature="157:210" ph="SELECT * FRO... user" />
-            <marker date="1518034009444" expanded="true" signature="573:684" ph="INSERT INTO review... " />
-            <marker date="1518034009444" expanded="true" signature="967:1241" ph="SELECT u.use... author" />
-            <marker date="1518034009444" expanded="true" signature="1439:1788" ph="SELECT u.use... author" />
-            <marker date="1518034009444" expanded="true" signature="1999:2034" ph="DELETE FROM " />
           </folding>
         </state>
       </provider>
@@ -545,14 +513,6 @@
           <folding>
             <marker date="1518034009381" expanded="true" signature="227:365" ph="INSERT INTO wishlist... " />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bookly.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3276">
-          <caret line="156" column="44" lean-forward="false" selection-start-line="156" selection-start-column="44" selection-end-line="156" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -609,7 +569,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/user_profile.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
+        <state relative-caret-position="420">
           <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
           <folding />
         </state>
@@ -623,40 +583,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/bookly.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="64" column="27" lean-forward="false" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/user.php">
+    <entry file="file://$PROJECT_DIR$/js/data_tables.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
-          <caret line="12" column="31" lean-forward="true" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-          <folding>
-            <marker date="1518033944553" expanded="true" signature="176:211" ph="SELECT * FRO... user" />
-            <marker date="1518033944553" expanded="true" signature="176:213" ph="SELECT * FRO... user" />
-            <marker date="1518033944553" expanded="true" signature="697:731" ph="SELECT * FRO... user" />
-            <marker date="1518033944553" expanded="true" signature="1582:1607" ph="UPDATE user... " />
-            <marker date="1518033944553" expanded="true" signature="1582:1648" ph="UPDATE user " />
-            <marker date="1518033944553" expanded="true" signature="1914:1960" ph="UPDATE user... " />
-            <marker date="1518033944553" expanded="true" signature="1914:1976" ph="UPDATE user... " />
-            <marker date="1518033944553" expanded="true" signature="1914:1979" ph="UPDATE user... " />
-            <marker date="1518033944553" expanded="true" signature="1914:1980" ph="UPDATE user " />
-            <marker date="1518033944553" expanded="true" signature="2770:2855" ph="INSERT INTO user... " />
-            <marker date="1518033944553" expanded="true" signature="3008:3122" ph="..." />
-            <marker date="1518033944553" expanded="true" signature="3487:3548" ph="SELECT isAdm... user" />
-            <marker date="1518033944553" expanded="true" signature="4572:4607" ph="SELECT * FRO... user" />
-            <marker date="1518033944553" expanded="true" signature="5410:5530" ph="INSERT INTO question... " />
-          </folding>
+          <caret line="12" column="38" lean-forward="false" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/ws_controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
+        <state relative-caret-position="42">
           <caret line="117" column="72" lean-forward="false" selection-start-line="117" selection-start-column="12" selection-end-line="117" selection-end-column="72" />
           <folding>
             <marker date="1518034632246" expanded="true" signature="1558:1575" ph="..." />
@@ -677,8 +614,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ws/ws.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="45" column="19" lean-forward="false" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
+        <state relative-caret-position="420">
+          <caret line="20" column="37" lean-forward="true" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
           <folding>
             <marker date="1518034951801" expanded="true" signature="512:532" ph="SELECT * FRO... author" />
             <marker date="1518034951801" expanded="true" signature="1099:1137" ph="SELECT * FRO... author" />
@@ -689,6 +626,75 @@
             <marker date="1518034951801" expanded="true" signature="6359:6379" ph="SELECT * FRO... author" />
             <marker date="1518034951801" expanded="true" signature="7836:7873" ph="SELECT * FRO... author" />
             <marker date="1518034951801" expanded="true" signature="9239:9498" ph="SELECT a.nam... wishlist" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_tables/datatables_obrada_reviews.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/bookly.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="64" column="27" lean-forward="false" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="131" column="13" lean-forward="true" selection-start-line="131" selection-start-column="13" selection-end-line="131" selection-end-column="13" />
+          <folding>
+            <marker date="1518033944553" expanded="true" signature="176:211" ph="SELECT * FRO... user" />
+            <marker date="1518033944553" expanded="true" signature="176:213" ph="SELECT * FRO... user" />
+            <marker date="1518033944553" expanded="true" signature="697:731" ph="SELECT * FRO... user" />
+            <marker date="1518033944553" expanded="true" signature="1582:1607" ph="UPDATE user... " />
+            <marker date="1518033944553" expanded="true" signature="1582:1648" ph="UPDATE user " />
+            <marker date="1518033944553" expanded="true" signature="1914:1960" ph="UPDATE user... " />
+            <marker date="1518033944553" expanded="true" signature="1914:1976" ph="UPDATE user... " />
+            <marker date="1518033944553" expanded="true" signature="1914:1979" ph="UPDATE user... " />
+            <marker date="1518033944553" expanded="true" signature="1914:1980" ph="UPDATE user " />
+            <marker date="1518033944553" expanded="true" signature="2770:2855" ph="INSERT INTO user... " />
+            <marker date="1518033944553" expanded="true" signature="3008:3122" ph="..." />
+            <marker date="1518033944553" expanded="true" signature="3487:3548" ph="SELECT isAdm... user" />
+            <marker date="1518033944553" expanded="true" signature="4572:4607" ph="SELECT * FRO... user" />
+            <marker date="1518033944553" expanded="true" signature="5410:5530" ph="INSERT INTO question... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookly.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="276" column="81" lean-forward="true" selection-start-line="276" selection-start-column="81" selection-end-line="276" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_tables/datatables_obrada_questions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="29" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/review.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="55" column="26" lean-forward="false" selection-start-line="55" selection-start-column="20" selection-end-line="55" selection-end-column="26" />
+          <folding>
+            <marker date="1518034009444" expanded="true" signature="157:210" ph="SELECT * FRO... user" />
+            <marker date="1518034009444" expanded="true" signature="573:684" ph="INSERT INTO review... " />
+            <marker date="1518034009444" expanded="true" signature="967:1241" ph="SELECT u.use... author" />
+            <marker date="1518034009444" expanded="true" signature="1439:1788" ph="SELECT u.use... author" />
+            <marker date="1518034009444" expanded="true" signature="1999:2034" ph="DELETE FROM " />
           </folding>
         </state>
       </provider>

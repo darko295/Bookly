@@ -1,5 +1,5 @@
 <?php
-include "../connection.php";
+include "../public/connection.php";
 
 
 
@@ -23,9 +23,6 @@ $columns = array(
     array( 'db' => 'reviewTime',     'dt' => 6 ),
 
 );
-
-
-
 
 
 // SQL server connection information
