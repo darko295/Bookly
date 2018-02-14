@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 06, 2018 at 10:25 PM
+-- Generation Time: Feb 07, 2018 at 09:28 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -149,7 +149,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`userID`, `username`, `password`, `passwordHash`, `email`, `active`, `isAdmin`) VALUES
 (1, 'darko', 'darko', '$2y$10$kF2m6c89nyG5v5LWTElV1uluh84HM5P/1/ERlcz.RATnXgAy3UL9G', 'darko', '0', 1),
-(10, 'darko1', 'darko1', '$2y$10$T7OvGXBTB9fzVQVU3ZNOsevicpooG9h4GYgjym0lKuMjgH./2OpR.', 'darko1', '0', 0),
+(10, 'darko1', 'darko1', '$2y$10$T7OvGXBTB9fzVQVU3ZNOsevicpooG9h4GYgjym0lKuMjgH./2OpR.', 'darko1', '1', 1),
 (15, 'nikola', 'nikola2232', '$2y$10$W1LsdegQMRPyF6LMiBdLKOPHF54lg27cqwmtxvHEHiV34do14xIwq', 'nikola@gmail.com', '0', 0),
 (16, 'test', 'password', '$2y$10$7wYXOhLB0Px.vM0MrXRPgOEeb2RaGN13u7DH7B1zO0XQDvD1niIuu', 'test@darko.rs', '0', 0),
 (21, 'petar153', 'petar153', '$2y$10$NgCbZSineGwffLwNbR.cHOrK6dw7wXo6SxxNGJU673E1PYlu2/bo.', 'petar153@gmail.com', '0', 0),
@@ -163,11 +163,11 @@ INSERT INTO `user` (`userID`, `username`, `password`, `passwordHash`, `email`, `
 (29, 'mika', 'mikamika', '$2y$10$YMf9CHiw5wBnMmj7tJz2fewOYNytXg2yoqbdgH8azxgXpQw.Ntbdi', 'mika123@yahoo.com', '0', 0),
 (30, 'darko1995', 'darkob123', '$2y$10$MIXqq0NiUIRpfcYEobaQLOtYlVKgKnpzBsYLqE8pG3oUwUxRmX3m.', 'darko1995@gmail.com', '0', 0),
 (32, 'petar', 'pera123pera', '$2y$10$skXbAI3d1a3sDBgodPlzXezbuOlB6nWqkbEb1yc..36IZ.hJMImn.', 'perapetar@outlook.com', '0', 0),
-(33, 'nemanja_fil', 'nemanja!@#$%', '$2y$10$/UVWzRlqbbMimphfH3DwSuJxdl61/2zWSEGUP89x4DH6JSvKa21yS', 'nemanja@gmail.com', '0', 0),
+(33, 'nemanja_fil', 'nemanja!@#$%', '$2y$10$/UVWzRlqbbMimphfH3DwSuJxdl61/2zWSEGUP89x4DH6JSvKa21yS', 'nemanja@gmail.com', '1', 0),
 (34, 'darko2', 'darko222', '$2y$10$DRQ.AfDxl/bbHXRvx//jD.BcCzudynUvaAOQYlEfDBFro3LgkcnnO', 'darko2@gmail.com', '0', 0),
 (35, 'darko9090', 'darko0909', '$2y$10$aIHgGNyHm9I94bIU1kYtCuWTgEK7vU4UgPORLuHCv5dV36TUiUysm', 'darko9090@gmail.com', '0', 0),
 (36, 'darko321', 'dar3213', '$2y$10$M1w4PHsEAZWhQZzSnuTesu8/sIRPzTfNk.BA4SYVZM3yERRG9UQk.', 'darko321@gmail.com', '0', 0),
-(37, 'milka', 'milka', '$2y$10$loeziy7PkXFgeVvgAatKiuaY4swwfaQyi3bML3LVu2vsKNjEMvGLm', 'milka123@gmail.com', '0', 0),
+(37, 'milka', 'milka', '$2y$10$loeziy7PkXFgeVvgAatKiuaY4swwfaQyi3bML3LVu2vsKNjEMvGLm', 'milka123@gmail.com', '1', 0),
 (38, 'jovan001', 'jovan12314', '$2y$10$O//iVe1ojEgCvgNV5aqF/e1./Gv77ZmByatRKyaSGLTj46B0DvBcW', 'jovan2001@yahoo.com', '0', 0),
 (39, 'jovan0012', 'fjsdhgsdlfkjsdg', '$2y$10$xKCAEtAeEJbXSj6qc72KUei0QluMnV8cHhNWCFYH9bHZ1GLHab0Ga', 'jovan20021@yahoo.com', '0', 0),
 (40, 'milos', 'milos32131', '$2y$10$msxUIWJpLOi39BRq0CjIc.zMuqPUax8zQ1ygJnYmAcJGyoUWskl.u', 'milos987@gmail.com', '0', 0);
