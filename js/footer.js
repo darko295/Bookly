@@ -41,9 +41,9 @@
                 success: function (result) {
                     if (result === "1") {
                         form.reset();
-                        $.notify("Question sent", "success");
+                        swal("Question sent!", "We will reply to you shortly", "success");
                     } else {
-                        $.notify(result, "warn");
+                        swal("Error sending question!", "Please try again later", "error");
                     }
                 }
             });

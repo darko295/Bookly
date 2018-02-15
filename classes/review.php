@@ -16,6 +16,7 @@ class review
     public function addReview($bookID, $authorID, $review, $stars, $username)
     {
         global $mysqli;
+        $review = trim($review);
         $row = $this->getID($username);
         $id = $row['userID'];
         $date = date("Y-m-d H:i:s");
@@ -33,7 +34,7 @@ class review
     {
         global $mysqli;
         $sql = "SELECT u.username, u.userID, b.bookTitle, b.bookID, a.authorID, a.name, a.surname, r.reviewID, r.reviewContent, r.reviewStars, r.reviewTime
-                FROM author a JOIN book b ON a.authorID=b.authorID JOIN review r ON b.bookID=r.bookID JOIN user u ON u.userID=r.userID";
+                FROM author a JOIN book b ON a.authorID=b.authorID JOIN review r ON b.bookID=r.bookID JOIN user u ON u.userID=r.userID ORDER BY r.reviewTime DESC";
         if ($rezultat = $mysqli->query($sql)) {
             return $rezultat;
         }

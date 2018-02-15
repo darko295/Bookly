@@ -96,6 +96,9 @@ class user
     public function create_account($username, $password, $mail, $active)
     {
         global $mysqli;
+        $username = trim($username);
+        $password = trim($password);
+        $mail = trim($mail);
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $mysqli->prepare("INSERT INTO user (username,password,passwordHash,email,active) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param("ssssi", $username, $password,$hashed_password, $mail, $active);
@@ -183,6 +186,8 @@ class user
         $is_answered = 0;
         $is_member = 0;
         $user_id = null;
+        $mail = trim($mail);
+        $text = trim($text);
         if ($username != null) {
             $result = $this->get_user($username);
             $user_array = $result->fetch_array();

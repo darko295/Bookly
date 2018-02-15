@@ -44,6 +44,7 @@ $info = $result -> fetch_array();
     <script src="js/jquery-3.1.1.js"></script>
     <script src="js/prefixfree.min.js"></script>
     <script src="js/footer.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </head>
 

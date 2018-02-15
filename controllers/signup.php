@@ -7,9 +7,7 @@ if (isset($_POST['create_submit'])) {
         $password = $_POST["create_password"];
         $mail = $_POST["create_email"];
 
-        $username = trim($username);
-        $password = trim($password);
-        $mail = trim($mail);
+
 
         include "../public/connection.php";
         include "../classes/user.php";

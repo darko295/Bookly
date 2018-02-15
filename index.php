@@ -50,6 +50,7 @@ if (!isset($_SESSION['index'])) {
     <script src="js/jquery-3.1.1.js"></script>
     <script type="text/javascript" src="js/login_signup_form.js"></script>
     <script src="js/footer.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
 </head>
