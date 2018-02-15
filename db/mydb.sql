@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2018 at 09:28 PM
+-- Generation Time: Feb 15, 2018 at 06:03 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -123,9 +123,8 @@ INSERT INTO `review` (`reviewID`, `userID`, `bookID`, `authorID`, `reviewContent
 (48, 27, 21, 19, 'Odlicna, zaista sjajna!!', 5, '2018-01-29 20:42:17'),
 (50, 28, 22, 5, 'Sjajna zbirka, preporucujem svakome', 4, '2018-02-05 15:23:09'),
 (51, 28, 23, 1, 'Neverovatno zanimljiva knjiga, veliku gresku sam napravio kada sam izbegao da je procitam u srednjoj skoli.', 4.5, '2018-02-05 15:26:00'),
-(52, 28, 8, 11, 'Nisam odusevljen', 1.5, '2018-02-05 15:26:09'),
-(53, 28, 11, 1, 'Ako mene pitate, nema bolje!', 5, '2018-02-05 15:29:17'),
-(55, 1, 24, 20, 'Sjajna knjiga.', 4.5, '2018-02-06 21:03:53');
+(57, 1, 8, 11, 'Nisam odusevljen', 1.5, '2018-02-15 17:03:55'),
+(58, 1, 11, 1, 'Ako mene pitate - nema bolje!', 5, '2018-02-15 17:06:26');
 
 -- --------------------------------------------------------
 
@@ -224,7 +223,7 @@ ALTER TABLE `book`
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `reviewID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `reviewID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `user`
