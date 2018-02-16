@@ -147,7 +147,7 @@ Flight::route('PUT /review/update/@id', function ($id) {
         $json_odgovor = json_encode($odgovor);
         echo $json_odgovor;
     } else {
-        if (!property_exists($podaci, 'reviewContent')) {
+        if (!property_exists($podaci, 'reviewContent') || !property_exists($podaci, 'reviewStars')) {
             $odgovor["poruka"] = "Wrong data passed";
             $json_odgovor = json_encode($odgovor, JSON_UNESCAPED_UNICODE);
             echo $json_odgovor;
@@ -159,8 +159,8 @@ Flight::route('PUT /review/update/@id', function ($id) {
                 $v = "'" . $v . "'";
                 $podaci_query[$k] = $v;
             }
-            $stmt = $mysqli -> prepare("UPDATE review SET reviewContent = ? WHERE reviewID = ?");
-            $stmt -> bind_param("si",$podaci->reviewContent,$id);
+            $stmt = $mysqli -> prepare("UPDATE review SET reviewContent = ?, reviewStars = ? WHERE reviewID = ?");
+            $stmt -> bind_param("sdi",$podaci->reviewContent,$podaci->reviewStars, $id);
             if ($stmt -> execute()) {
                 $odgovor["poruka"] = "Review updated";
                 $json_odgovor = json_encode($odgovor, JSON_UNESCAPED_UNICODE);
