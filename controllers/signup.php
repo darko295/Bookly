@@ -9,8 +9,8 @@ if (isset($_POST['create_submit'])) {
 
 
 
-        include "../public/connection.php";
-        include "../classes/user.php";
+        include(dirname(__FILE__) . "/../public/connection.php");
+        include(dirname(__FILE__) . "/../classes/user.php");
         $user = new user();
         $user -> create_account($username,$password,$mail,0);
 

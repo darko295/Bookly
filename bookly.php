@@ -14,9 +14,8 @@ $current = "Guest";
 if (!isset($_SESSION['bookly'])) {
     $_SESSION['bookly'] = true;
     $stats->incrementDailyViews(basename($_SERVER["SCRIPT_FILENAME"]));
-    if (!isset($_SESSION['index'])) {
-        $stats->incrementTotalViews(basename($_SERVER["SCRIPT_FILENAME"]));
-    }
+    $stats->incrementTotalViews(basename($_SERVER["SCRIPT_FILENAME"]));
+
 }
 
 
@@ -37,7 +36,7 @@ if (!isset($_SESSION['bookly'])) {
     <!-- JS-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
     <!-- CSS -->
@@ -57,7 +56,6 @@ if (!isset($_SESSION['bookly'])) {
 
     <script type="text/javascript" src="js/bookly.js"></script>
     <script src="js/footer.js"></script>
-
 
 
     <style>
@@ -134,7 +132,8 @@ if (isset($_SESSION['username'])) {
                             <a class="dropdown-item open" id="show-wishlist" href="#" data-toggle="modal"
                                data-target="#myModal"><span
                                         class="glyphicon glyphicon-user"></span>&nbsp;My wishlist</a>
-                            <a class="dropdown-item" href="controllers/logout.php" ><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign
+                            <a class="dropdown-item" href="controllers/logout.php"><span
+                                        class="glyphicon glyphicon-log-out"></span>&nbsp;Sign
                                 Out</a>
                         </div>
                     </li>

@@ -3,10 +3,8 @@ session_start();
 
 include "classes/review.php";
 $review = new review();
-
 include "classes/user.php";
 $user = new user();
-
 include "classes/stats.php";
 $stats = new stats();
 
@@ -14,11 +12,8 @@ $stats = new stats();
 if (!isset($_SESSION['index'])) {
     $_SESSION['index'] = true;
     $stats->incrementDailyViews(basename($_SERVER["SCRIPT_FILENAME"]));
-    if (!isset($_SESSION['bookly'])) {
-        $stats->incrementTotalViews(basename($_SERVER["SCRIPT_FILENAME"]));
-    }
+    $stats->incrementTotalViews(basename($_SERVER["SCRIPT_FILENAME"]));
 }
-
 ?>
 <html>
 <head>
@@ -116,7 +111,8 @@ if (!isset($_SESSION['index'])) {
                             <a class="dropdown-item" href="user_profile.php"><span
                                         class="glyphicon glyphicon-user"></span>&nbsp;View
                                 Profile</a>
-                            <a class="dropdown-item" href="controllers/logout.php"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign
+                            <a class="dropdown-item" href="controllers/logout.php"><span
+                                        class="glyphicon glyphicon-log-out"></span>&nbsp;Sign
                                 Out</a>
                         </div>
                     </li>

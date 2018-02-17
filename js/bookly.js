@@ -7,38 +7,36 @@ $(function () {
         });
 });
 
-function alert(table_row) {
-
-    swal({
-        title: "Are you sure?",
-        text: "Once deleted, you will not be able to recover this review!",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-    }).then((willDelete) => {
-        if(willDelete) {
-            $.notify("Review deleted", "success");
-            $(table_row).parent().parent().parent().remove();
-        } else {
-            swal("Review is safe!");
-}
-})
-}
-
 //Remove review on "x" click
 $(document).ready(function () {
     $(".remove-row").click(function () {
         var value = ($(this).attr("id")).substring(7);
         var table_row = $(this);
         var action = "delete_review";
-        $.get("controllers/controller.php", {reviewID: value, action: action},
-            function (data) {
-                if (data === "1") {
-                    alert(table_row);
-                } else {
-                    swal("Error deleting!", "Please try again", "error");
-                }
-            });
+
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this review!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete) => {
+            if(willDelete) {
+
+                $.get("controllers/controller.php", {reviewID: value, action: action},
+                    function (data) {
+                        if (data === "1") {
+                            $.notify("Review deleted", "success");
+                            $(table_row).parent().parent().parent().remove();
+                        } else {
+                            swal("Error deleting!", "Please try again", "error");
+                        }
+                    });
+
+            } else {
+                swal("Your review is safe!");
+            }
+        })
     });
 });
 
